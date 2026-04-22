@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://djgbmqovgds0u"]
+
+[ext_resource type="PackedScene" uid="uid://daqguhskthakg" path="res://Assets/prototype/tree.glb" id="1_w6dye"]
+[ext_resource type="Material" uid="uid://bw4t2bcc11cbm" path="res://Assets/colors/green2.tres" id="2_bk73i"]
+[ext_resource type="Material" uid="uid://cs4xdjiaiy83y" path="res://Assets/colors/green1.tres" id="3_51lgp"]
+[ext_resource type="Material" uid="uid://c2acjm4jovj15" path="res://Assets/colors/tree-bottom.tres" id="3_gngol"]
+[ext_resource type="Material" uid="uid://c0qaexag2n0ev" path="res://Assets/colors/green3.tres" id="4_gngol"]
+[ext_resource type="Material" uid="uid://d1jwehghekl8q" path="res://Assets/colors/tree-bottom-2.tres" id="6_l72l4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ll2lv"]
+albedo_color = Color(0.12481242, 0.47527146, 0.16749394, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l72l4"]
+albedo_color = Color(0.2267215, 0.54611117, 0.38430616, 1)
+
+[node name="tree" unique_id=474559294 instance=ExtResource("1_w6dye")]
+
+[node name="Cube_063" parent="." index="0" unique_id=1059678996]
+surface_material_override/0 = ExtResource("2_bk73i")
+
+[node name="Cube_062" parent="." index="1" unique_id=1994179160]
+surface_material_override/0 = SubResource("StandardMaterial3D_ll2lv")
+
+[node name="Cube_068" parent="." index="2" unique_id=1075757697]
+surface_material_override/0 = ExtResource("2_bk73i")
+
+[node name="Pillar_035" parent="." index="3" unique_id=241993102]
+surface_material_override/0 = ExtResource("3_gngol")
+
+[node name="Cube_067" parent="." index="4" unique_id=967433109]
+surface_material_override/0 = ExtResource("3_51lgp")
+
+[node name="Cube_066" parent="." index="5" unique_id=361446500]
+surface_material_override/0 = ExtResource("2_bk73i")
+
+[node name="Cube_060" parent="." index="6" unique_id=723697230]
+surface_material_override/0 = ExtResource("2_bk73i")
+
+[node name="Cube_065" parent="." index="7" unique_id=1844077708]
+surface_material_override/0 = ExtResource("4_gngol")
+
+[node name="Cube_059" parent="." index="8" unique_id=1870603300]
+surface_material_override/0 = SubResource("StandardMaterial3D_l72l4")
+
+[node name="Pillar_037" parent="." index="9" unique_id=1600571572]
+surface_material_override/0 = ExtResource("3_gngol")
+
+[node name="Cube_058" parent="." index="10" unique_id=718995910]
+surface_material_override/0 = ExtResource("4_gngol")
+
+[node name="Cube_064" parent="." index="11" unique_id=536469339]
+surface_material_override/0 = ExtResource("4_gngol")
+
+[node name="Cube_057" parent="." index="12" unique_id=2123594119]
+surface_material_override/0 = ExtResource("3_51lgp")
+
+[node name="Pillar_036" parent="." index="13" unique_id=746113618]
+surface_material_override/0 = ExtResource("6_l72l4")
+
+[node name="Cube_061" parent="." index="14" unique_id=1878333258]
+surface_material_override/0 = ExtResource("2_bk73i")

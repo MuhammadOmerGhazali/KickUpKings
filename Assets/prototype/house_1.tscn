@@ -1,0 +1,449 @@
+[gd_scene format=3 uid="uid://yvsjotmgoui7"]
+
+[ext_resource type="PackedScene" uid="uid://xphwka1p86di" path="res://Assets/prototype/house1.glb" id="1_ig7ai"]
+[ext_resource type="Material" uid="uid://dwmn3wiif5t4y" path="res://Assets/colors/wall-upper.tres" id="2_f0m1x"]
+[ext_resource type="Material" uid="uid://bfowy86ojdqtj" path="res://Assets/colors/stair1.tres" id="2_la6yb"]
+[ext_resource type="Material" uid="uid://d1jwehghekl8q" path="res://Assets/colors/tree-bottom-2.tres" id="3_6pdae"]
+[ext_resource type="Material" uid="uid://c0mnkyc4oylth" path="res://Assets/colors/stair2.tres" id="3_f0m1x"]
+[ext_resource type="Texture2D" uid="uid://veog0q1ivoi5" path="res://WhatsApp Image 2026-04-21 at 10.47.01 PM.jpeg" id="3_la6yb"]
+[ext_resource type="Material" uid="uid://d1lpjwa4p371x" path="res://Assets/prototype/house.tres" id="6_0mfd5"]
+
+[node name="house1" unique_id=419583043 instance=ExtResource("1_ig7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.890945, 0.07249594, -2.7770348)
+
+[node name="Wall_017" parent="." index="0" unique_id=1579293503]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_070" parent="." index="1" unique_id=743053148]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_061" parent="." index="2" unique_id=1942398999]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_014" parent="." index="3" unique_id=367106981]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_032" parent="." index="4" unique_id=900517499]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_045" parent="." index="5" unique_id=1228141522]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall corner top_002" parent="." index="6" unique_id=1679297169]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ramp_002" parent="." index="7" unique_id=1840454888]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Spikes_002" parent="." index="8" unique_id=1596524697]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_080" parent="." index="9" unique_id=247182346]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Coin_001" parent="." index="10" unique_id=1717397384]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_031" parent="." index="11" unique_id=1254026011]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_003" parent="." index="12" unique_id=2064203839]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_090" parent="." index="13" unique_id=2118964984]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_067" parent="." index="14" unique_id=1159938566]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ramp_010" parent="." index="15" unique_id=766638634]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_079" parent="." index="16" unique_id=1538126799]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Box_003" parent="." index="17" unique_id=1364416048]
+surface_material_override/0 = ExtResource("3_6pdae")
+
+[node name="Cube_030" parent="." index="18" unique_id=1533617103]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Railing_003" parent="." index="19" unique_id=2077159115]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_089" parent="." index="20" unique_id=996308476]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_069" parent="." index="21" unique_id=1638729147]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_096" parent="." index="22" unique_id=1731242523]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_038" parent="." index="23" unique_id=299199021]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_007" parent="." index="24" unique_id=937989085]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Key_001" parent="." index="25" unique_id=687885171]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Box_002" parent="." index="26" unique_id=2114093342]
+surface_material_override/0 = ExtResource("3_6pdae")
+
+[node name="Cube_029" parent="." index="27" unique_id=2030087718]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Railing_001" parent="." index="28" unique_id=102667201]
+surface_material_override/0 = ExtResource("3_6pdae")
+
+[node name="Wall_088" parent="." index="29" unique_id=1117365628]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_068" parent="." index="30" unique_id=353553465]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ramp_003" parent="." index="31" unique_id=1022480973]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Box_001" parent="." index="32" unique_id=1094045148]
+surface_material_override/0 = ExtResource("3_6pdae")
+
+[node name="Cube_028" parent="." index="33" unique_id=1122048135]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_087" parent="." index="34" unique_id=932818408]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_066" parent="." index="35" unique_id=1488632043]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ramp_009" parent="." index="36" unique_id=80948348]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_064" parent="." index="37" unique_id=1063098196]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_027" parent="." index="38" unique_id=1942880158]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_044" parent="." index="39" unique_id=118005750]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Stairs corner_002" parent="." index="40" unique_id=334569674]
+visible = false
+surface_material_override/0 = ExtResource("2_la6yb")
+
+[node name="Cube_034" parent="." index="41" unique_id=2076091217]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Stairs_006" parent="." index="42" unique_id=1063931081]
+visible = false
+surface_material_override/0 = ExtResource("2_la6yb")
+
+[node name="Wall corner_015" parent="." index="43" unique_id=1039859016]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_065" parent="." index="44" unique_id=1465270207]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_035" parent="." index="45" unique_id=1845617623]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Stairs_008" parent="." index="46" unique_id=1235675705]
+visible = false
+surface_material_override/0 = ExtResource("3_f0m1x")
+
+[node name="Wall_097" parent="." index="47" unique_id=1644301204]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_042" parent="." index="48" unique_id=1066130652]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_026" parent="." index="49" unique_id=1225783948]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Stairs corner_003" parent="." index="50" unique_id=1511900730]
+visible = false
+surface_material_override/0 = ExtResource("2_la6yb")
+
+[node name="Wall corner_014" parent="." index="51" unique_id=1761367123]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_058" parent="." index="52" unique_id=203362965]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ramp_011" parent="." index="53" unique_id=1116074754]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_047" parent="." index="54" unique_id=1404937897]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall door_006" parent="." index="55" unique_id=246967169]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_060" parent="." index="56" unique_id=801767848]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_019" parent="." index="57" unique_id=1827277139]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Stairs_005" parent="." index="58" unique_id=685045597]
+visible = false
+surface_material_override/0 = ExtResource("2_la6yb")
+
+[node name="Wall corner_013" parent="." index="59" unique_id=494348109]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_040" parent="." index="60" unique_id=1527484135]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Railing_002" parent="." index="61" unique_id=374738677]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_041" parent="." index="62" unique_id=270118846]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Spikes_001" parent="." index="63" unique_id=1379450959]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_037" parent="." index="64" unique_id=418915397]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_018" parent="." index="65" unique_id=1878960631]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Stairs_003" parent="." index="66" unique_id=2014522886]
+visible = false
+surface_material_override/0 = ExtResource("2_la6yb")
+
+[node name="Wall_016" parent="." index="67" unique_id=74999797]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_012" parent="." index="68" unique_id=1927022234]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Railing edge_001" parent="." index="69" unique_id=892959181]
+transform = Transform3D(3.576278e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, 3.576278e-07, -1, 8, 1)
+surface_material_override/0 = ExtResource("3_6pdae")
+
+[node name="Cube_024" parent="." index="70" unique_id=315178185]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Pillar_010" parent="." index="71" unique_id=1828402182]
+surface_material_override/0 = ExtResource("3_6pdae")
+
+[node name="Wall corner_012" parent="." index="72" unique_id=508674584]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ladder_004" parent="." index="73" unique_id=2114449888]
+surface_material_override/0 = ExtResource("6_0mfd5")
+
+[node name="Wall_059" parent="." index="74" unique_id=1170557874]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_015" parent="." index="75" unique_id=481490537]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_077" parent="." index="76" unique_id=1999253218]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ramp_008" parent="." index="77" unique_id=2090530584]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ladder_003" parent="." index="78" unique_id=804093424]
+surface_material_override/0 = ExtResource("6_0mfd5")
+
+[node name="Box_004" parent="." index="79" unique_id=69067348]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Coin_009" parent="." index="80" unique_id=59507849]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_049" parent="." index="81" unique_id=1317920922]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_053" parent="." index="82" unique_id=656309932]
+visible = false
+surface_material_override/0 = ExtResource("2_la6yb")
+
+[node name="Cube_014" parent="." index="83" unique_id=11648857]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_076" parent="." index="84" unique_id=1213940019]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ladder_002" parent="." index="85" unique_id=1824089652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.990983, 1.9367943, 1.2109828)
+surface_material_override/0 = ExtResource("6_0mfd5")
+
+[node name="Toggle switch_002" parent="." index="86" unique_id=1134538658]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Spikes_004" parent="." index="87" unique_id=258309756]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_095" parent="." index="88" unique_id=1376930579]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_063" parent="." index="89" unique_id=577912705]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_048" parent="." index="90" unique_id=76281162]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_052" parent="." index="91" unique_id=1777692235]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_021" parent="." index="92" unique_id=479898321]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_075" parent="." index="93" unique_id=2022438655]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Stairs_009" parent="." index="94" unique_id=2069509107]
+visible = false
+surface_material_override/0 = ExtResource("2_la6yb")
+
+[node name="Spikes_009" parent="." index="95" unique_id=1531140091]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_086" parent="." index="96" unique_id=356190435]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Coin_007" parent="." index="97" unique_id=1903731964]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_016" parent="." index="98" unique_id=465219796]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_051" parent="." index="99" unique_id=937514370]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall window_004" parent="." index="100" unique_id=1136546560]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Spikes_003" parent="." index="101" unique_id=347236566]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_025" parent="." index="102" unique_id=432301965]
+surface_material_override/0 = ExtResource("3_6pdae")
+
+[node name="Wall_074" parent="." index="103" unique_id=35198469]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Spikes_008" parent="." index="104" unique_id=1011869653]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Stairs_007" parent="." index="105" unique_id=2077950434]
+visible = false
+surface_material_override/0 = ExtResource("2_la6yb")
+
+[node name="Wall_085" parent="." index="106" unique_id=1244552978]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Coin_006" parent="." index="107" unique_id=73192154]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_046" parent="." index="108" unique_id=848805461]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_078" parent="." index="109" unique_id=1533069023]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_050" parent="." index="110" unique_id=100702763]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_011" parent="." index="111" unique_id=792080655]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_013" parent="." index="112" unique_id=2108067855]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ramp_006" parent="." index="113" unique_id=590084955]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_073" parent="." index="114" unique_id=1837949906]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Spikes_007" parent="." index="115" unique_id=2134624801]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_084" parent="." index="116" unique_id=917817681]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Coin_005" parent="." index="117" unique_id=1798517612]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_045" parent="." index="118" unique_id=1869104917]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_081" parent="." index="119" unique_id=1845706137]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_062" parent="." index="120" unique_id=1775653900]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_009" parent="." index="121" unique_id=608058726]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ramp_005" parent="." index="122" unique_id=609734069]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_072" parent="." index="123" unique_id=1930157710]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Spikes_006" parent="." index="124" unique_id=426544115]
+surface_material_override/0 = ExtResource("3_6pdae")
+
+[node name="Wall_083" parent="." index="125" unique_id=1026527050]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Coin_004" parent="." index="126" unique_id=984387131]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_044" parent="." index="127" unique_id=1631538049]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Cube_023" parent="." index="128" unique_id=1533629045]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Coin_002" parent="." index="129" unique_id=1751277951]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Ramp_004" parent="." index="130" unique_id=219161164]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_071" parent="." index="131" unique_id=492134696]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Spikes_005" parent="." index="132" unique_id=664060104]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Coin_008" parent="." index="133" unique_id=566912294]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_082" parent="." index="134" unique_id=1476030404]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Coin_003" parent="." index="135" unique_id=1962849729]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall_015" parent="." index="136" unique_id=423217655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.990982, 3.9367943, 1.010982)
+surface_material_override/0 = ExtResource("3_6pdae")
+
+[node name="Ramp_007" parent="." index="137" unique_id=1320678116]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="Wall corner bottom_015" parent="." index="138" unique_id=1167697571]
+surface_material_override/0 = ExtResource("2_f0m1x")
+
+[node name="WhatsAppImage20260421At10_47_01Pm" type="Sprite2D" parent="." index="139" unique_id=2093863895]
+position = Vector2(-442, 950)
+texture = ExtResource("3_la6yb")
+
+[node name="WhatsAppImage20260421At10_47_01Pm2" type="Sprite2D" parent="." index="140" unique_id=1900089949]
+position = Vector2(-442, 950)
+texture = ExtResource("3_la6yb")

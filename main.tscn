@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b2pyfpl5oy5e8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dm0k"]
+albedo_color = Color(0.4883389, 0.75591654, 0.34285766, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+material = SubResource("StandardMaterial3D_7dm0k")
+size = Vector3(40, 0.5, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+size = Vector3(40, 0.5, 40)
+
+[node name="Main" type="Node3D" unique_id=162422823]
+
+[node name="Environment" type="Node3D" parent="." unique_id=1844543507]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment" unique_id=969824089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/StaticBody3D" unique_id=1898125032]
+mesh = SubResource("BoxMesh_ig7tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D" unique_id=1688588173]
+shape = SubResource("BoxShape3D_7dm0k")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1524896943]
+transform = Transform3D(1, 0, 0, 0, 0.9995325, -0.030573403, 0, 0.030573403, 0.9995325, 0, 4.122552, -7.9112806)
