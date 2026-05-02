@@ -24,12 +24,12 @@ func _ready() -> void:
 	#right_foot.started_dragging.connect(_on_player_interacted)
 	
 	# If the button is pressed, restart
-	ui_manager.try_again_button.pressed.connect(_on_restart_triggered)
-	
+	#ui_manager.try_again_button.pressed.connect(_on_restart_triggered)
+	#
 	# 3. Initial UI Setup via Manager
 	score = 0
-	ui_manager.Initialize_game_ui()
-	ui_manager.update_score(score)
+	#ui_manager.Initialize_game_ui()
+	#ui_manager.update_score(score)
 
 # --- Scoring Logic ---
 func _on_ball_scored() -> void:
