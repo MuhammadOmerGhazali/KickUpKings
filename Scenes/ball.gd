@@ -30,9 +30,9 @@ func _on_body_entered(body: Node):
 
 func _physics_process(_delta):
 	# (Keep your existing speed limits and Z-lock here)
-	var current_speed = linear_velocity.length()
-	if current_speed > max_speed:
-		linear_velocity = linear_velocity.normalized() * max_speed
+	#var current_speed = linear_velocity.length()
+	#if current_speed > max_speed:
+		#linear_velocity = linear_velocity.normalized() * max_speed
 	global_position.z = z_fixed_position
 
 func start_physics():

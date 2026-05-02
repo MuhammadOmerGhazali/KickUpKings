@@ -1,9 +1,5 @@
 [gd_scene format=3 uid="uid://bpiuon6gbawx0"]
 
 [ext_resource type="PackedScene" uid="uid://blf47iw30bvuf" path="res://Assets/player.glb" id="1_onrkg"]
-[ext_resource type="Script" uid="uid://c5kgug2m0oif3" path="res://head.gd" id="2_i3pqv"]
 
 [node name="player" unique_id=851535004 instance=ExtResource("1_onrkg")]
-
-[node name="head" parent="." index="0" unique_id=621952290]
-script = ExtResource("2_i3pqv")

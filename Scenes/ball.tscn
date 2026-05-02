@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b6i3ksgr5g233"]
+
+[ext_resource type="Script" uid="uid://c4bifu0qc3fru" path="res://Scenes/ball.gd" id="1_376qj"]
+[ext_resource type="PackedScene" uid="uid://bdtdce1noqrs3" path="res://Assets/Balls/Simple.glb" id="4_yk4cr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ij5cq"]
+bounce = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7u77a"]
+radius = 0.25
+
+[node name="ball" type="RigidBody3D" unique_id=1078967228]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_ij5cq")
+gravity_scale = 3.0
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_376qj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=648678176]
+shape = SubResource("SphereShape3D_7u77a")
+
+[node name="Simple2" parent="." unique_id=905783755 instance=ExtResource("4_yk4cr")]
