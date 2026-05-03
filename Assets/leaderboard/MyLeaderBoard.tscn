@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://novi8lticu31"]
+
+[ext_resource type="Script" uid="uid://6nbuesy2l10u" path="res://Scenes/leaderBoardScript.gd" id="1_nh2p0"]
+[ext_resource type="Texture2D" uid="uid://b05iucs0oeccn" path="res://Assets/UI/BackGround.png" id="2_o54fk"]
+[ext_resource type="Texture2D" uid="uid://dbaxabygqhda4" path="res://Assets/UI/LeaderBoard/leaderboard border.png" id="2_rn71c"]
+[ext_resource type="Texture2D" uid="uid://d4hg20gd38bbb" path="res://Assets/UI/LeaderBoard/back.png" id="3_o54fk"]
+[ext_resource type="Texture2D" uid="uid://c07wmkgo37i8y" path="res://Assets/UI/LeaderBoard/Header.png" id="4_5dbjy"]
+[ext_resource type="Texture2D" uid="uid://cow0bf1c26yah" path="res://Assets/UI/LeaderBoard/mainplayerBack.png" id="5_o54fk"]
+
+[node name="leaderboard" type="Control" unique_id=272155125]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nh2p0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1704917163]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o54fk")
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect" unique_id=57851273]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -393.0
+offset_top = 182.0
+offset_right = 564.0
+offset_bottom = 374.0
+grow_horizontal = 2
+scale = Vector2(0.83561206, 0.7303824)
+texture = ExtResource("4_5dbjy")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=951133698]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -491.0
+offset_top = -1528.0
+offset_right = 357.0
+offset_bottom = -190.87244
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.1638092, 1.094703)
+texture = ExtResource("2_rn71c")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/TextureRect" unique_id=972646841]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.10312
+offset_top = 40.193565
+offset_right = -51.47766
+offset_bottom = -16.442749
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.017724, 0.9010295)
+
+[node name="ScoreList" type="VBoxContainer" parent="TextureRect/TextureRect/ScrollContainer" unique_id=343569289]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="my rank" type="TextureRect" parent="TextureRect/TextureRect" unique_id=801451263]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -388.77084
+offset_top = -124.92639
+offset_right = 401.22913
+offset_bottom = -21.926392
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.9824344, 0.9390458)
+texture = ExtResource("5_o54fk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/TextureRect/my rank" unique_id=1401161916]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 400
+
+[node name="rank" type="Label" parent="TextureRect/TextureRect/my rank/HBoxContainer" unique_id=1070903775]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "My # :"
+
+[node name="score" type="Label" parent="TextureRect/TextureRect/my rank/HBoxContainer" unique_id=1086435564]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Score :"
+
+[node name="backBtn" type="TextureButton" parent="." unique_id=1315665593]
+layout_mode = 1
+offset_left = 62.0
+offset_top = 32.0
+offset_right = 167.0
+offset_bottom = 136.0
+texture_normal = ExtResource("3_o54fk")

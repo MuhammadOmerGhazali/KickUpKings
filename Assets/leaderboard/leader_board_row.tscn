@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://dy4f685lrffp"]
+
+[ext_resource type="Texture2D" uid="uid://dyo4h2pb5gg3p" path="res://Assets/UI/LeaderBoard/playerBack.png" id="1_fk678"]
+[ext_resource type="Texture2D" uid="uid://e2lxn1ufvubc" path="res://Assets/UI/LeaderBoard/rank.png" id="2_qolgs"]
+
+[node name="leaderBoardRow" type="Control" unique_id=1932989477]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+scale = Vector2(1, 2.7655644)
+size_flags_horizontal = 3
+
+[node name="bg" type="TextureRect" parent="." unique_id=808567455]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9765654, 1.0612046)
+texture = ExtResource("1_fk678")
+
+[node name="TextureRect" type="TextureRect" parent="bg" unique_id=1119862331]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 65.535805
+offset_top = -38.160774
+offset_right = 143.5358
+offset_bottom = 37.839226
+grow_vertical = 2
+texture = ExtResource("2_qolgs")
+
+[node name="position" type="Label" parent="bg/TextureRect" unique_id=1757635851]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -27.500004
+offset_right = 30.0
+offset_bottom = 27.500004
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="name" type="Label" parent="bg" unique_id=67249134]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -41.500004
+offset_right = 125.0
+offset_bottom = 41.500004
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "salman"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="score" type="Label" parent="bg" unique_id=2005655014]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -185.02673
+offset_top = -41.56813
+offset_right = -35.026733
+offset_bottom = 41.43187
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 60
+text = "200"
+horizontal_alignment = 1
+vertical_alignment = 1
