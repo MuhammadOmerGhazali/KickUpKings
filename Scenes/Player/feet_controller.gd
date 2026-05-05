@@ -1,5 +1,7 @@
 extends AnimatableBody3D
 
+signal foot_pressed
+
 @export var top_clamp: Node3D
 @export var bottom_clamp: Node3D
 @export var pivot: Node3D
@@ -33,6 +35,12 @@ func _input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			_dragging = true
+			foot_pressed.emit()
+			print("foot pressed")
+	elif event is InputEventScreenTouch:
+		if event.pressed:
+			_dragging = true
+			foot_pressed.emit()
 
 func _input(event):
 	# Release anywhere on screen

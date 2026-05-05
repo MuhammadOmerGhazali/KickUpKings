@@ -4,7 +4,7 @@ extends Control
 @onready var my_score = $"TextureRect/TextureRect/my rank/HBoxContainer/score"
 @onready var my_rank = $"TextureRect/TextureRect/my rank/HBoxContainer/rank"
 @onready var Rank_container = $"TextureRect/TextureRect/my rank"
-var row_scene = preload("res://Scenes/leader_board_row.tscn")
+var row_scene = preload("res://Assets/leaderboard/leader_board_row.tscn")
 
 
 func _ready():

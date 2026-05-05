@@ -1,69 +1,73 @@
 extends Node3D
 
-# --- Node References ---
-@onready var ball = $ball
-#@onready var left_foot = $LeftFeet
-#@onready var right_foot = $RightFeet
+@export var ui_manager : UIManager 
+@export var audio_manager : Node 
+@export var coin_spawner : CoinSpawner
 
-# Adjust this path depending on where your UIManager is in the scene tree
-@onready var ui_manager = $UiManager
+@export var Ball : RigidBody3D
+@export var playerBody : PlayerBody
+@export var FeetController : Node3D
 
-# --- Game Variables ---
-var ball_start_pos: Vector3
-var score: int = 0
-var game_active: bool = false
+var game_running : bool = false
+
+var current_score = 0
+var current_coins 
 
 func _ready() -> void:
-	# 1. Store the ball's starting position for resets
-	ball_start_pos = ball.global_position
+	print_tree_pretty()
+	if coin_spawner != null:
+		coin_spawner.IncreaseCoin.connect(_on_coin_increased)
+	else:
+		push_error("CoinSpawner is not assigned in the Main script!")
+	if FeetController != null:
+		# Loop through both feet (the children of the controller)
+		for foot in FeetController.get_children():
+			# Check if the child is actually one of our foot objects with the signal
+			if foot.has_signal("foot_pressed"):
+				foot.foot_pressed.connect(_on_foot_pressed)
+	else:
+		push_error("FeetController is not assigned in the Main script!")
+		
+	if Ball:
+		Ball.hit_foot.connect(_on_score_increased)
+		Ball.hit_floor.connect(_on_game_over)
+	else:
+		push_error("Ball is not assigned in the Main script!")
+	ui_manager.retry_pressed.connect(reset_game)
+
+func _on_score_increased() -> void:
+	current_score += 1
+	ui_manager.changeScore(current_score)
+
+func _on_coin_increased() -> void:
+	pass
+
+func _on_foot_pressed() -> void:
+	if not game_running:
+		start_game()
+
+func start_game() -> void:
+	game_running = true
+	playerBody.startHeadTurn()
+	Ball.start_physics()
 	
-	# 2. Connect Signals
-	#ball.hit_floor.connect(_on_game_over)
-	#ball.hit_foot.connect(_on_ball_scored)
-	#left_foot.started_dragging.connect(_on_player_interacted)
-	#right_foot.started_dragging.connect(_on_player_interacted)
 	
-	# If the button is pressed, restart
-	#ui_manager.try_again_button.pressed.connect(_on_restart_triggered)
-	#
-	# 3. Initial UI Setup via Manager
-	score = 0
-	#ui_manager.Initialize_game_ui()
-	#ui_manager.update_score(score)
-
-# --- Scoring Logic ---
-func _on_ball_scored() -> void:
-	score += 1
-	ui_manager.update_score(score)
-
-# --- Game State Logic ---
-func _on_player_interacted() -> void:
-	if not game_active:
-		game_active = true
-		ball.start_physics() # Tell the ball to start falling
-
-
 func _on_game_over() -> void:
-	ui_manager.Show_game_over()
-	ball.freeze = true 
-	game_active = false
-	print("Game Over! Final Score: ", score)
+	if not game_running: return
+	game_running = false
+	ui_manager.change_menu(UIManager.Menu.GAME_OVER)
+	ui_manager.updateGameOver(current_score)
+	game_logic_reset()
 
-# --- Restart Logic ---
-func _on_restart_triggered() -> void:
-	# Ensure we don't trigger this multiple times during gameplay
-	if game_active: return
 	
-	# 1. Reset Score
-	score = 0
-	ui_manager.update_score(score)
-	
-	ui_manager.bottombar_toggle()
-	# 2. Reset the ball
-	ball.freeze = true
-	ball.linear_velocity = Vector3.ZERO
-	ball.angular_velocity = Vector3.ZERO
-	ball.global_position = ball_start_pos
-	
-	# 3. Hide Game Over Screen
-	ui_manager.Hide_game_over()
+
+func reset_game() -> void:
+	game_logic_reset()
+	ui_manager.change_menu(UIManager.Menu.LEVEL)  
+
+func game_logic_reset():
+	game_running = false
+	Ball.reset_ball()
+	playerBody.stop_head_turn()
+	current_score = 0
+	ui_manager.changeScore(0)

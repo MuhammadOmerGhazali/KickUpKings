@@ -1,54 +1,59 @@
 extends Node
 class_name UIManager
 
-# --- Node References ---
-#@onready var fade: ColorRect = $"../UI/Fade"
-@onready var score_label: Label = $"../UI/Level/Score"
-@onready var game_over_label: Label = $"../UI/GameOver/GameOverLabel"
-@onready var try_again_button: Button = $"../UI/GameOver/TryAgainButton"
+signal retry_pressed
 
+@export var start_menu_ui : Control 
+@export var level_ui : Control
+@export var game_over_ui : Control
+@export var shop_ui : Control
+@export var wardrobe_ui : Control
+@export var leaderboard_ui : Control
+
+enum Menu { START, LEVEL, GAME_OVER, SHOP, WARDROBE, LEADERBOARD }
+
+@onready var all_menus : Array[Control] = [
+	start_menu_ui, level_ui, game_over_ui, 
+	shop_ui, wardrobe_ui, leaderboard_ui
+]
 
 func _ready() -> void:
-	# Set initial fade state
-	#fade.modulate.a = 0.0
-	try_again_button.pressed.connect(func(): print("Button was physically clicked!"))
+	$"../UI/GameOver".retry_clicked.connect(_on_retry_button_clicked)
+	change_menu(Menu.START)
+	pass
 
-func Initialize_game_ui() -> void:
-	#bottombar_toggle()
-	Hide_game_over()
-	Show_Score()
-
-# --- Score UI ---
-func update_score(new_score: int) -> void:
-	score_label.text = str(new_score)
-	# Optional juice:
-	var tween = create_tween()
-	tween.tween_property(score_label, "scale", Vector2(1.2, 1.2), 0.1)
-	tween.tween_property(score_label, "scale", Vector2(1.0, 1.0), 0.1)
-
-func Show_Score() -> void:
-	score_label.show()
-
-func Hide_Score() -> void:
-	score_label.hide()
-
-# --- Game Over UI ---
-func Show_game_over() -> void:
-	game_over_label.show()
-	try_again_button.show()
+func change_menu(target: Menu) -> void:
+	for menu in all_menus:
+		if menu: menu.visible = false
 	
-	# Fade in background
-	#fade.show()
-	#var tween = create_tween()
-	#tween.tween_property(fade, "modulate:a", 1.0, 0.5)
+	match target:
+		Menu.START: start_menu_ui.visible = true
+		Menu.LEVEL: level_ui.visible = true
+		Menu.GAME_OVER: game_over_ui.visible = true
+		Menu.SHOP: shop_ui.visible = true
+		Menu.WARDROBE: wardrobe_ui.visible = true
+		Menu.LEADERBOARD: leaderboard_ui.visible = true
 
-func Hide_game_over() -> void:
-	game_over_label.hide()
-	try_again_button.hide()
-	
-	# Fade out background
-	#var tween = create_tween()
-	#tween.tween_property(fade, "modulate:a", 0.0, 0.5)
-	#tween.tween_callback(fade.hide) # Clean up by hiding it fully once transparent
 
-# --- Bottom Bar ---
+func _on_play_button_pressed() -> void:
+	$"../CameraManager".goto_level()
+	change_menu(Menu.LEVEL)
+func _on_leader_board_button_pressed() -> void:
+	change_menu(Menu.LEADERBOARD)
+func _on_wardrobe_button_pressed() -> void:
+	$"../CameraManager".goto_player()
+	change_menu(Menu.WARDROBE)
+func _on_shop_button_pressed() -> void:
+	change_menu(Menu.SHOP)
+func _on_back_btn_pressed() -> void:
+	change_menu(Menu.START)
+
+
+func changeScore(new_score:int):
+	$"../UI/Level".increase_score(new_score)
+func updateGameOver(final_score : int):
+	$"../UI/GameOver/ManuBack/FinalScoreLabel".text = str(final_score)
+
+
+func _on_retry_button_clicked():
+	retry_pressed.emit()
