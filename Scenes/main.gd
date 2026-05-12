@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var ui_manager : UIManager 
-@export var audio_manager : Node 
+@export var audio_manager : AudioManager 
 @export var coin_spawner : CoinSpawner
 
 @export var Ball : RigidBody3D
@@ -14,7 +14,7 @@ var current_score = 0
 var current_coins 
 
 func _ready() -> void:
-	print_tree_pretty()
+	audio_manager.play_music()
 	if coin_spawner != null:
 		coin_spawner.IncreaseCoin.connect(_on_coin_increased)
 	else:
@@ -36,8 +36,10 @@ func _ready() -> void:
 	ui_manager.retry_pressed.connect(reset_game)
 
 func _on_score_increased() -> void:
+	audio_manager.play_kick()
 	current_score += 1
 	ui_manager.changeScore(current_score)
+	
 
 func _on_coin_increased() -> void:
 	pass
@@ -54,9 +56,17 @@ func start_game() -> void:
 	
 func _on_game_over() -> void:
 	if not game_running: return
+	audio_manager.stop_music()
+	var is_new_record = DataManager.update_high_score(current_score)
+	if is_new_record:
+		audio_manager.play_highscore()
+	else:
+		audio_manager.play_game_over()
+		
 	game_running = false
 	ui_manager.change_menu(UIManager.Menu.GAME_OVER)
 	ui_manager.updateGameOver(current_score)
+	
 	game_logic_reset()
 
 	
@@ -64,6 +74,7 @@ func _on_game_over() -> void:
 func reset_game() -> void:
 	game_logic_reset()
 	ui_manager.change_menu(UIManager.Menu.LEVEL)  
+	audio_manager.play_music()
 
 func game_logic_reset():
 	game_running = false

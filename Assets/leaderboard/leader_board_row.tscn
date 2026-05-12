@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dyo4h2pb5gg3p" path="res://Assets/UI/LeaderBoard/playerBack.png" id="1_fk678"]
 [ext_resource type="Texture2D" uid="uid://e2lxn1ufvubc" path="res://Assets/UI/LeaderBoard/rank.png" id="2_qolgs"]
+[ext_resource type="FontFile" uid="uid://cflaixuetaulw" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="3_n4xub"]
 
 [node name="leaderBoardRow" type="Control" unique_id=1932989477]
 custom_minimum_size = Vector2(0, 100)
@@ -28,10 +29,11 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 65.535805
-offset_top = -38.160774
+offset_top = -39.182983
 offset_right = 143.5358
-offset_bottom = 37.839226
+offset_bottom = 36.817017
 grow_vertical = 2
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_qolgs")
 
 [node name="position" type="Label" parent="bg/TextureRect" unique_id=1757635851]
@@ -42,13 +44,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -27.500004
-offset_right = 30.0
-offset_bottom = 27.500004
+offset_left = -29.690939
+offset_top = -22.512032
+offset_right = 30.30906
+offset_bottom = 32.48797
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_n4xub")
 theme_override_font_sizes/font_size = 40
 text = "1"
 horizontal_alignment = 1
@@ -62,13 +65,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -41.500004
-offset_right = 125.0
-offset_bottom = 41.500004
+offset_left = -132.44922
+offset_top = -30.664598
+offset_right = 131.55078
+offset_bottom = 52.335403
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 60
+theme_override_colors/font_outline_color = Color(0.023529412, 0.10980392, 0.24705882, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_n4xub")
+theme_override_font_sizes/font_size = 70
 text = "salman"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -81,14 +87,17 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -185.02673
-offset_top = -41.56813
-offset_right = -35.026733
-offset_bottom = 41.43187
+offset_left = -185.02667
+offset_top = -29.642393
+offset_right = -35.02661
+offset_bottom = 53.357605
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
-theme_override_font_sizes/font_size = 60
+theme_override_colors/font_outline_color = Color(0.019607844, 0.14509805, 0.30980393, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_n4xub")
+theme_override_font_sizes/font_size = 70
 text = "200"
 horizontal_alignment = 1
 vertical_alignment = 1

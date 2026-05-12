@@ -28,8 +28,8 @@ func apply_skin(index: int):
 	get_node(active_skin.body_path).visible = true
 	
 	# 3. Update the global data so it's remembered next time the game starts
-	DataManager.save_data.current_skin_index = index
-	DataManager.save_game()
+	#DataManager.save_data.current_skin_index = index
+	#DataManager.save_game()
 
 func startHeadTurn():
 	$Heads.Start_head_turn()

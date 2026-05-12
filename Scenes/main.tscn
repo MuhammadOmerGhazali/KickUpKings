@@ -5,9 +5,15 @@
 [ext_resource type="Script" uid="uid://dhux7wpewu5tm" path="res://Scenes/camera_manager.gd" id="2_kltya"]
 [ext_resource type="Texture2D" uid="uid://jjypvbmvpsf4" path="res://Assets/Backgound/StartMenu.png" id="3_gt3je"]
 [ext_resource type="Texture2D" uid="uid://bekwxi5j24ep7" path="res://Assets/UI/SplashBanner.webp" id="3_k12tt"]
+[ext_resource type="Script" uid="uid://hrm3op1iflin" path="res://Scenes/audio_manager.gd" id="4_8cuat"]
 [ext_resource type="Texture2D" uid="uid://gej7ghtweamd" path="res://Assets/UI/Buttons/playbutton.png" id="5_gt3je"]
+[ext_resource type="AudioStream" uid="uid://b261kf125uj7d" path="res://Assets/Sounds/kick.mp3" id="5_kwxat"]
+[ext_resource type="AudioStream" uid="uid://cdbqlt2g0f0fp" path="res://Assets/Sounds/Back3.mp3" id="5_nwwfm"]
 [ext_resource type="Texture2D" uid="uid://bqi0n0e1vrs1o" path="res://Assets/UI/Buttons/wardrobebutton.png" id="6_3pmx8"]
+[ext_resource type="AudioStream" uid="uid://y48ke06fca8n" path="res://Assets/Sounds/Modern12.mp3" id="6_kqrg6"]
+[ext_resource type="AudioStream" uid="uid://crrpew1c7qfec" path="res://Assets/Sounds/gameOver.mp3" id="6_kwxat"]
 [ext_resource type="Texture2D" uid="uid://bwug1jfsinmnj" path="res://Assets/UI/Buttons/shop button.png" id="6_u50mg"]
+[ext_resource type="AudioStream" uid="uid://dydqidy64i10s" path="res://Assets/Sounds/highscore2.mp3" id="7_aa8k8"]
 [ext_resource type="Texture2D" uid="uid://pppt2dl8u5fd" path="res://Assets/UI/Buttons/leaderboard.png" id="7_cbgmd"]
 [ext_resource type="Script" uid="uid://dt147uj45s1eu" path="res://Scenes/UI/level.gd" id="10_536cc"]
 [ext_resource type="Texture2D" uid="uid://jcy3rsga6ftc" path="res://Assets/UI/TryAgain/Menu.png" id="10_fevyy"]
@@ -16,13 +22,13 @@
 [ext_resource type="Script" uid="uid://71dldf07dd35" path="res://Scenes/UI/game_over.gd" id="12_aqgau"]
 [ext_resource type="Texture2D" uid="uid://dogpseakq84lr" path="res://Assets/UI/TryAgain/mainMenuButton.png" id="12_ee4r6"]
 [ext_resource type="PackedScene" uid="uid://bhw2mqt1fbnkp" path="res://Assets/Backgound/grass.glb" id="12_h1bgf"]
-[ext_resource type="Texture2D" uid="uid://dyhmhyi1xltqo" path="res://Assets/Backgound/Los_ang1.png" id="13_fevyy"]
 [ext_resource type="Texture2D" uid="uid://b05iucs0oeccn" path="res://Assets/UI/BackGround.png" id="13_gt3je"]
 [ext_resource type="Texture2D" uid="uid://cjkx2b3r8uyfw" path="res://Assets/UI/Shop/ShopHeader.png" id="14_u50mg"]
 [ext_resource type="Texture2D" uid="uid://bd2mnmm4vifyo" path="res://Assets/UI/Shop/Mycoins.png" id="15_6vcvc"]
 [ext_resource type="Texture2D" uid="uid://pvq38sguhx7j" path="res://Assets/UI/Shop/removeAds.png" id="15_cbgmd"]
 [ext_resource type="Texture2D" uid="uid://ja4gfb25qw2m" path="res://Assets/UI/Shop/CoinPackHeader.png" id="17_7k868"]
 [ext_resource type="PackedScene" uid="uid://c2bs4qx712mv5" path="res://Scenes/feet.tscn" id="17_b3802"]
+[ext_resource type="FontFile" uid="uid://cflaixuetaulw" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="17_s8vy0"]
 [ext_resource type="PackedScene" uid="uid://onn0rcsigsga" path="res://Scenes/player.tscn" id="18_hibaj"]
 [ext_resource type="Texture2D" uid="uid://da3q5u3fuvr1b" path="res://Assets/UI/Shop/SmallCoinPack.png" id="18_hpc6h"]
 [ext_resource type="Texture2D" uid="uid://inx7ijkgcb80" path="res://Assets/UI/Shop/MediumCoinPack.png" id="19_kltya"]
@@ -40,6 +46,12 @@
 [ext_resource type="Texture2D" uid="uid://cow0bf1c26yah" path="res://Assets/UI/LeaderBoard/mainplayerBack.png" id="30_536cc"]
 [ext_resource type="Script" uid="uid://bmvy5qaf3li1o" path="res://Scenes/coinspawner.gd" id="37_jwpg7"]
 [ext_resource type="PackedScene" uid="uid://14wtnkh7tseb" path="res://Scenes/coin.tscn" id="38_k2e45"]
+[ext_resource type="Texture2D" uid="uid://e2lxn1ufvubc" path="res://Assets/UI/LeaderBoard/rank.png" id="40_v2nl5"]
+[ext_resource type="Script" uid="uid://dq28uu678kgmm" path="res://Scenes/background.gd" id="42_v2nl5"]
+[ext_resource type="Script" uid="uid://bwb5iho1i8xfh" path="res://Scripts/PlaceSkin.gd" id="43_54nrm"]
+[ext_resource type="Texture2D" uid="uid://b21tcfidsfhj3" path="res://Assets/Backgound/rooftop.png" id="43_jut3y"]
+[ext_resource type="Texture2D" uid="uid://uxtxcr1cuqds" path="res://Assets/Backgound/los_ang.png" id="45_55jeb"]
+[ext_resource type="Texture2D" uid="uid://r5scfi5lu87" path="res://Assets/Backgound/paris.png" id="46_gsvbx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_344ge"]
 sky_top_color = Color(0.20392157, 0.59607846, 0.85882354, 1)
@@ -62,12 +74,34 @@ fog_enabled = true
 fog_light_color = Color(0.4836825, 0.56218815, 0.62259376, 1)
 fog_light_energy = 0.04
 
+[sub_resource type="Resource" id="Resource_bv80c"]
+script = ExtResource("43_54nrm")
+skin_name = "rooftop"
+Place_texture = ExtResource("43_jut3y")
+price = 0
+metadata/_custom_type_script = "uid://bwb5iho1i8xfh"
+
+[sub_resource type="Resource" id="Resource_ptfg5"]
+script = ExtResource("43_54nrm")
+skin_name = "los_ang"
+Place_texture = ExtResource("45_55jeb")
+price = 20
+metadata/_custom_type_script = "uid://bwb5iho1i8xfh"
+
+[sub_resource type="Resource" id="Resource_2daye"]
+script = ExtResource("43_54nrm")
+skin_name = "paris"
+Place_texture = ExtResource("46_gsvbx")
+price = 100
+metadata/_custom_type_script = "uid://bwb5iho1i8xfh"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u77a"]
 size = Vector3(40, 1, 40)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fevyy"]
 shading_mode = 0
-albedo_texture = ExtResource("13_fevyy")
+albedo_texture = ExtResource("46_gsvbx")
+texture_filter = 0
 disable_receive_shadows = true
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fevyy"]
@@ -143,6 +177,12 @@ wardrobe_ui = NodePath("../UI/Wardrobe")
 leaderboard_ui = NodePath("../UI/leaderboard")
 
 [node name="AudioManager" type="Node" parent="." unique_id=886587169]
+script = ExtResource("4_8cuat")
+bgm_track = ExtResource("5_nwwfm")
+kick_sfx = ExtResource("5_kwxat")
+click_sfx = ExtResource("6_kqrg6")
+game_over_sfx = ExtResource("6_kwxat")
+highscore_sfx = ExtResource("7_aa8k8")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=243350006]
 layer = -1
@@ -250,6 +290,61 @@ texture_focused = ExtResource("6_3pmx8")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Name" type="ColorRect" parent="UI/StartMenu" unique_id=1814887464]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011764706, 0.1254902, 0.2627451, 1)
+
+[node name="Label" type="LineEdit" parent="UI/StartMenu/Name" unique_id=1793823722]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -129.0
+offset_right = 34.5
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 60
+placeholder_text = "Name"
+alignment = 1
+expand_to_text_length = true
+
+[node name="Label2" type="Label" parent="UI/StartMenu/Name" unique_id=1192238649]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 53.0
+offset_right = 20.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9843137, 0.77254903, 0.32941177, 1)
+theme_override_colors/font_outline_color = Color(0.15294118, 0.15294118, 0.15294118, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 60
+text = "Enter Your Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Level" type="Control" parent="UI" unique_id=1737117982 node_paths=PackedStringArray("score_label")]
 visible = false
 layout_mode = 3
@@ -272,9 +367,11 @@ offset_top = 226.0
 offset_right = 92.0
 offset_bottom = 445.0
 grow_horizontal = 2
-theme_override_constants/outline_size = 40
-theme_override_constants/shadow_outline_size = 1
-theme_override_font_sizes/font_size = 160
+theme_override_colors/font_color = Color(0.99215686, 0.7529412, 0.3137255, 1)
+theme_override_colors/font_outline_color = Color(0, 0.14117648, 0.34509805, 1)
+theme_override_constants/outline_size = 60
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 170
 text = "13"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -289,6 +386,7 @@ scale = Vector2(1.3, 1.3)
 texture_normal = ExtResource("25_hpc6h")
 
 [node name="GameOver" type="Control" parent="UI" unique_id=1638915121]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -357,15 +455,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -124.0
-offset_top = -102.5
+offset_top = -85.0
 offset_right = 133.0
-offset_bottom = 102.5
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.99607843, 0.7882353, 0.29803923, 1)
+theme_override_colors/font_color = Color(0.98039216, 0.7764706, 0.34901962, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_colors/font_outline_color = Color(0.18431373, 0.1254902, 0.02745098, 1)
+theme_override_colors/font_outline_color = Color(0.2509804, 0.14117648, 0.02745098, 1)
 theme_override_constants/outline_size = 38
+theme_override_fonts/font = ExtResource("17_s8vy0")
 theme_override_font_sizes/font_size = 150
 text = "0"
 horizontal_alignment = 1
@@ -484,8 +583,7 @@ offset_bottom = 2245.0554
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("18_hpc6h")
 
-[node name="Wardrobe" type="Control" parent="UI" unique_id=201387901 node_paths=PackedStringArray("player_node", "ball_node", "shoe_node")]
-visible = false
+[node name="Wardrobe" type="Control" parent="UI" unique_id=201387901 node_paths=PackedStringArray("player_node", "ball_node", "shoe_node", "place_node")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -496,6 +594,7 @@ script = ExtResource("22_e08e2")
 player_node = NodePath("../../Player/PlayerBody")
 ball_node = NodePath("../../ball")
 shoe_node = NodePath("../../Player/FeetController")
+place_node = NodePath("../../Background")
 
 [node name="Fade" type="TextureRect" parent="UI/Wardrobe" unique_id=1059612225]
 layout_mode = 1
@@ -507,20 +606,22 @@ grow_vertical = 2
 texture = ExtResource("21_6vcvc")
 
 [node name="Equip" type="TextureButton" parent="UI/Wardrobe" unique_id=988953186]
+custom_minimum_size = Vector2(500, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -188.0
-offset_top = 486.0
-offset_right = 70.0
-offset_bottom = 575.0
+offset_left = -198.0
+offset_top = 414.0
+offset_right = 202.0
+offset_bottom = 714.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("21_1w6v2")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="UI/Wardrobe/Equip" unique_id=1231709738]
 layout_mode = 1
@@ -529,16 +630,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.333336
-offset_top = -28.5
-offset_right = 102.66667
-offset_bottom = 26.5
+offset_left = -102.333336
+offset_top = -22.5
+offset_right = 101.66666
+offset_bottom = 32.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 50
 text = "1000 coins"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -581,14 +683,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -117.5
+offset_top = -28.0
+offset_right = 117.5
+offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 70
 text = "Player"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -608,14 +711,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -72.5
+offset_top = -26.0
+offset_right = 76.5
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 70
 text = "Ball"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -635,14 +739,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -97.5
+offset_top = -28.0
+offset_right = 105.5
+offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 70
 text = "Shoes"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -684,6 +789,38 @@ offset_right = 157.0
 offset_bottom = 164.0
 scale = Vector2(1.3, 1.3)
 texture_normal = ExtResource("25_hpc6h")
+
+[node name="location" type="TextureButton" parent="UI/Wardrobe" unique_id=2113875540]
+custom_minimum_size = Vector2(325, 150)
+layout_mode = 0
+offset_left = 697.0
+offset_top = 45.0
+offset_right = 1022.0
+offset_bottom = 195.0
+size_flags_horizontal = 3
+texture_normal = ExtResource("21_1w6v2")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UI/Wardrobe/location" unique_id=1716105515]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -28.0
+offset_right = 105.5
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 70
+text = "Location "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="leaderboard" type="Control" parent="UI" unique_id=272155125]
 visible = false
@@ -776,17 +913,44 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 400
+theme_override_constants/separation = 150
 
-[node name="rank" type="Label" parent="UI/leaderboard/TextureRect/TextureRect/my rank/HBoxContainer" unique_id=1070903775]
+[node name="TextureRect" type="TextureRect" parent="UI/leaderboard/TextureRect/TextureRect/my rank/HBoxContainer" unique_id=374503358]
 layout_mode = 2
+texture = ExtResource("40_v2nl5")
+
+[node name="rank" type="Label" parent="UI/leaderboard/TextureRect/TextureRect/my rank/HBoxContainer/TextureRect" unique_id=1070903775]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -34.893322
+offset_top = -30.098953
+offset_right = 110.106674
+offset_bottom = 38.901047
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
 theme_override_font_sizes/font_size = 50
-text = "My # :"
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="UI/leaderboard/TextureRect/TextureRect/my rank/HBoxContainer" unique_id=1465414490]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 50
+text = "name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="score" type="Label" parent="UI/leaderboard/TextureRect/TextureRect/my rank/HBoxContainer" unique_id=1086435564]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
 theme_override_font_sizes/font_size = 50
 text = "Score :"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="backBtn" type="TextureButton" parent="UI/leaderboard" unique_id=1315665593]
 layout_mode = 1
@@ -831,6 +995,8 @@ shadow_blur = 2.0
 
 [node name="Background" type="Node3D" parent="." unique_id=400514593]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.583656)
+script = ExtResource("42_v2nl5")
+place_skins = Array[ExtResource("43_54nrm")]([SubResource("Resource_bv80c"), SubResource("Resource_ptfg5"), SubResource("Resource_2daye")])
 
 [node name="Floor" type="StaticBody3D" parent="Background" unique_id=1037111078 groups=["floor"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.559721, 8.424778)
@@ -846,7 +1012,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6938258, 0.7843456)
 
 [node name="Plane_001" type="MeshInstance3D" parent="Background/Floor/background" unique_id=400562579]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.175851, -13.07512)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.175851, -13.075121)
 material_override = SubResource("StandardMaterial3D_fevyy")
 mesh = SubResource("ArrayMesh_m2yjr")
 
@@ -915,6 +1081,7 @@ max_y = 5.943
 [connection signal="pressed" from="UI/StartMenu/BottomBar/ShopButton" to="UiManager" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="UI/StartMenu/BottomBar/LeaderBoardButton" to="UiManager" method="_on_leader_board_button_pressed"]
 [connection signal="pressed" from="UI/StartMenu/BottomBar/WardrobeButton" to="UiManager" method="_on_wardrobe_button_pressed"]
+[connection signal="text_submitted" from="UI/StartMenu/Name/Label" to="UI/leaderboard" method="_on_label_text_submitted"]
 [connection signal="pressed" from="UI/Level/Back2" to="UiManager" method="_on_back_btn_pressed"]
 [connection signal="pressed" from="UI/GameOver/ManuBack/RetryButton" to="UI/GameOver" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="UI/GameOver/ManuBack/MenuButton" to="UiManager" method="_on_back_btn_pressed"]
@@ -929,4 +1096,6 @@ max_y = 5.943
 [connection signal="pressed" from="UI/Wardrobe/Previous" to="UI/Wardrobe" method="_on_previous_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/Next" to="UI/Wardrobe" method="_on_next_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/Back" to="UiManager" method="_on_back_btn_pressed"]
+[connection signal="pressed" from="UI/Wardrobe/Back" to="UI/Wardrobe" method="_on_back_pressed"]
+[connection signal="pressed" from="UI/Wardrobe/location" to="UI/Wardrobe" method="_on_location_pressed"]
 [connection signal="pressed" from="UI/leaderboard/backBtn" to="UiManager" method="_on_back_btn_pressed"]

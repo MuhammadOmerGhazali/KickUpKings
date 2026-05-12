@@ -3,6 +3,9 @@ extends RigidBody3D
 signal hit_floor
 signal hit_foot 
 
+# Change "$MeshInstance3D" to the actual name/path of your ball's visual mesh
+@onready var ball_mesh: MeshInstance3D = $new/Simple
+
 # --- Skin System Variables ---
 @export var skins: Array[BallSkin] = []
 var current_skin_index: int = 0
@@ -24,34 +27,69 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	angular_damp = 2
 	
+	setup_unique_material()
+	
 	# Load the selected ball skin from DataManager
-	current_skin_index = DataManager.save_data.current_ball_index
+	# current_skin_index = DataManager.save_data.current_ball_index
 	apply_skin(current_skin_index)
 
-## Applies the visual mesh and saves the choice
+func setup_unique_material():
+	var mat: Material
+	
+	# Check if a material exists on surface 0
+	if ball_mesh.get_active_material(0):
+		# Duplicate it so we don't change the original resource
+		mat = ball_mesh.get_active_material(0).duplicate()
+	else:
+		# If no material exists, create a brand new one!
+		mat = StandardMaterial3D.new()
+		print("No default material found on ball_mesh. Created a new StandardMaterial3D.")
+		
+	# Apply it as the surface override
+	ball_mesh.set_surface_override_material(0, mat)
+
+## Applies the visual texture and saves the choice
 func apply_skin(index: int):
-	if skins.is_empty():
-		push_warning("No skins assigned to the Ball script!")
+	if skins.is_empty() or index >= skins.size():
+		push_warning("No skins assigned to the Ball script or invalid index!")
 		return
 
-	# 1. Hide all ball visuals first
-	for skin in skins:
-		var node = get_node_or_null(skin.ball_path)
-		if node:
-			node.visible = false
-	
-	# 2. Show the selected one
 	var active_skin = skins[index]
-	var active_node = get_node_or_null(active_skin.ball_path)
-	if active_node:
-		active_node.visible = true
-		current_skin_index = index
-		
-		# 3. Persistence: Save the choice globally
-		DataManager.save_data.current_ball_index = index
-		DataManager.save_game()
+	var tex = active_skin.ball_texture 
+	
+	# Get the material we created in setup_unique_material()
+	var mat = ball_mesh.get_surface_override_material(0)
+	
+	# CHANGED: Use BaseMaterial3D. This works for both StandardMaterial3D and ORMMaterial3D!
+	if mat is BaseMaterial3D:
+		mat.albedo_texture = tex
+		mat.albedo_color = Color.WHITE # Forces the base color to white so it doesn't tint your texture
+		print("Successfully applied texture: ", tex)
 	else:
-		push_error("Ball skin node not found at path: ", active_skin.ball_path)
+		push_error("Failed to apply texture! Material is null or not a BaseMaterial3D. Material: ", mat)
+		
+	current_skin_index = index
+## Applies the visual texture and saves the choice
+#func apply_skin(index: int):
+	#if skins.is_empty() or index >= skins.size():
+		#push_warning("No skins assigned to the Ball script or invalid index!")
+		#return
+#
+	#var active_skin = skins[index]
+	#var tex = active_skin.ball_texture # Pulls the texture from your resource
+	#
+	## Get the duplicated material we created in setup_unique_material()
+	#var mat = ball_mesh.get_surface_override_material(0)
+	#
+	## Apply the texture to the material
+	#if mat is StandardMaterial3D:
+		#mat.albedo_texture = tex
+		#
+	#current_skin_index = index
+	#
+	## Persistence: Save the choice globally
+	## DataManager.save_data.current_ball_index = index
+	## DataManager.save_game()
 
 # --- Navigation Functions for Shop UI ---
 
@@ -87,7 +125,6 @@ func _physics_process(_delta):
 func start_physics():
 	freeze = false
 	print("Ball physics activated!")
-
 
 func reset_ball():
 	freeze = true

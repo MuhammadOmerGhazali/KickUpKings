@@ -20,6 +20,10 @@ enum Menu { START, LEVEL, GAME_OVER, SHOP, WARDROBE, LEADERBOARD }
 func _ready() -> void:
 	$"../UI/GameOver".retry_clicked.connect(_on_retry_button_clicked)
 	change_menu(Menu.START)
+	if DataManager.get_player_name() == "":
+		$"../UI/StartMenu/Name".visible = true
+	else :
+		$"../UI/StartMenu/Name".visible = false
 	pass
 
 func change_menu(target: Menu) -> void:
@@ -37,16 +41,23 @@ func change_menu(target: Menu) -> void:
 
 func _on_play_button_pressed() -> void:
 	$"../CameraManager".goto_level()
+	$"../AudioManager".play_click()
 	change_menu(Menu.LEVEL)
 func _on_leader_board_button_pressed() -> void:
 	change_menu(Menu.LEADERBOARD)
+	$"../AudioManager".play_click()
 func _on_wardrobe_button_pressed() -> void:
 	$"../CameraManager".goto_player()
+	$"../AudioManager".play_click()
+	$"../UI/Wardrobe".reset_previews_to_equipped()
 	change_menu(Menu.WARDROBE)
 func _on_shop_button_pressed() -> void:
 	change_menu(Menu.SHOP)
+	$"../AudioManager".play_click()
 func _on_back_btn_pressed() -> void:
 	change_menu(Menu.START)
+	$"../AudioManager".play_click()
+	$"../AudioManager".play_music()
 
 
 func changeScore(new_score:int):
@@ -56,4 +67,5 @@ func updateGameOver(final_score : int):
 
 
 func _on_retry_button_clicked():
+	$"../AudioManager".play_click()
 	retry_pressed.emit()

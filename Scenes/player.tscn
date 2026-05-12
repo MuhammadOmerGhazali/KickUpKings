@@ -15,6 +15,7 @@ script = ExtResource("2_f1ek2")
 skin_name = "erling"
 head_path = NodePath("Heads/Erling")
 body_path = NodePath("Body/Erling_body")
+price = 0
 metadata/_custom_type_script = "uid://dcpy63qtpnx0n"
 
 [sub_resource type="Resource" id="Resource_tx1dd"]
@@ -22,6 +23,7 @@ script = ExtResource("2_f1ek2")
 skin_name = "messi"
 head_path = NodePath("Heads/Messi")
 body_path = NodePath("Body/Messi")
+price = 30
 metadata/_custom_type_script = "uid://dcpy63qtpnx0n"
 
 [sub_resource type="Resource" id="Resource_pu2lt"]

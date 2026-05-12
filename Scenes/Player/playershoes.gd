@@ -37,8 +37,8 @@ func apply_shoe_skin(index: int):
 	
 	# Update index and save to local storage
 	current_shoe_index = index
-	DataManager.save_data.current_shoe_index = index
-	DataManager.save_game()
+	#DataManager.save_data.current_shoe_index = index
+	#DataManager.save_game()
 
 # --- Shop Navigation Logic ---
 
