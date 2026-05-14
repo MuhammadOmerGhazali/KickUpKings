@@ -131,4 +131,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7926655, 0.008683383, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75505495, 0.53034496, -0.9962611)
 
 [node name="RightPivot" type="Node3D" parent="." unique_id=1674101600]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79227614, 0.53034496, -0.9962611)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85783887, 0.7193879, -1.0607674)

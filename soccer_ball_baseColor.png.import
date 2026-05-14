@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dj1747i5gcfkl"
 path.s3tc="res://.godot/imported/soccer_ball_baseColor.png-90d59c3a33daf6663b0bf6880faa1701.s3tc.ctex"
+path.etc2="res://.godot/imported/soccer_ball_baseColor.png-90d59c3a33daf6663b0bf6880faa1701.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://soccer_ball_baseColor.png"
-dest_files=["res://.godot/imported/soccer_ball_baseColor.png-90d59c3a33daf6663b0bf6880faa1701.s3tc.ctex"]
+dest_files=["res://.godot/imported/soccer_ball_baseColor.png-90d59c3a33daf6663b0bf6880faa1701.s3tc.ctex", "res://.godot/imported/soccer_ball_baseColor.png-90d59c3a33daf6663b0bf6880faa1701.etc2.ctex"]
 
 [params]
 

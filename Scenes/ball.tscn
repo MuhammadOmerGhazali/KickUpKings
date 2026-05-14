@@ -15,7 +15,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ij5cq"]
 friction = 0.1
-bounce = 0.4
+bounce = 1.0
 
 [sub_resource type="Resource" id="Resource_hk63f"]
 script = ExtResource("2_31idh")
@@ -90,6 +90,7 @@ shadow_mesh = SubResource("ArrayMesh_y2mgh")
 albedo_texture = ExtResource("4_o05bq")
 
 [node name="ball" type="RigidBody3D" unique_id=1078967228 groups=["ball"]]
+mass = 2.0
 physics_material_override = SubResource("PhysicsMaterial_ij5cq")
 gravity_scale = 2.0
 continuous_cd = true

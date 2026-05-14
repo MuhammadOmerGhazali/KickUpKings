@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmuvsysq5esfk"
 path.s3tc="res://.godot/imported/new_albedo_slime.png-653c37ad33b5a8c6957beb8d335cff21.s3tc.ctex"
+path.etc2="res://.godot/imported/new_albedo_slime.png-653c37ad33b5a8c6957beb8d335cff21.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Balls/new_albedo_slime.png"
-dest_files=["res://.godot/imported/new_albedo_slime.png-653c37ad33b5a8c6957beb8d335cff21.s3tc.ctex"]
+dest_files=["res://.godot/imported/new_albedo_slime.png-653c37ad33b5a8c6957beb8d335cff21.s3tc.ctex", "res://.godot/imported/new_albedo_slime.png-653c37ad33b5a8c6957beb8d335cff21.etc2.ctex"]
 
 [params]
 

@@ -17,6 +17,7 @@ func _ready() -> void:
 	audio_manager.play_music()
 	if coin_spawner != null:
 		coin_spawner.IncreaseCoin.connect(_on_coin_increased)
+		#coin_spawner.fixed_z_position = Ball.global_position.z
 	else:
 		push_error("CoinSpawner is not assigned in the Main script!")
 	if FeetController != null:
@@ -31,6 +32,7 @@ func _ready() -> void:
 	if Ball:
 		Ball.hit_foot.connect(_on_score_increased)
 		Ball.hit_floor.connect(_on_game_over)
+		Ball.hit_coin.connect(_on_coin_increased)
 	else:
 		push_error("Ball is not assigned in the Main script!")
 	ui_manager.retry_pressed.connect(reset_game)
@@ -42,7 +44,8 @@ func _on_score_increased() -> void:
 	
 
 func _on_coin_increased() -> void:
-	pass
+	DataManager.add_coins(1)
+	print(DataManager.save_data.coins)
 
 func _on_foot_pressed() -> void:
 	if not game_running:
@@ -52,6 +55,7 @@ func start_game() -> void:
 	game_running = true
 	playerBody.startHeadTurn()
 	Ball.start_physics()
+	coin_spawner.spawn_object() 
 	
 	
 func _on_game_over() -> void:
@@ -80,5 +84,6 @@ func game_logic_reset():
 	game_running = false
 	Ball.reset_ball()
 	playerBody.stop_head_turn()
+	coin_spawner.clear_coins()
 	current_score = 0
 	ui_manager.changeScore(0)

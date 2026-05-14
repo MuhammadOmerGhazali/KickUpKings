@@ -52,7 +52,8 @@ func sync_leaderboard_data():
 		my_score_label.text = str(int(top_score_obj.score))
 		
 		# 3. Use the score value instead of score_id (often more reliable for position)
-		var pos_result = await SilentWolf.Scores.get_score_position(top_score_obj.score).sw_get_position_complete
+		#var pos_result = await SilentWolf.Scores.get_score_position(top_score_obj.score).sw_get_position_complete
+		var pos_result = await SilentWolf.Scores.get_score_position(top_score_obj.score_id).sw_get_position_complete
 		
 		if pos_result != null:
 			my_rank_label.text = str(pos_result.position)

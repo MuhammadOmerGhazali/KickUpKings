@@ -71,11 +71,11 @@ func update_shop_ui():
 
 	# Update the Label Text
 	if is_currently_equipped:
-		$Equip/Label.text = "EQUIPPED"
+		$VBoxContainer/Equip/Label.text = "EQUIPPED"
 	elif is_unlocked:
-		$Equip/Label.text = "EQUIP"
+		$VBoxContainer/Equip/Label.text = "EQUIP"
 	else:
-		$Equip/Label.text = "REACH " + str(price) + " SCORE"
+		$VBoxContainer/Equip/Label.text = "REACH " + str(price) + " SCORE"
 
 # This is the "Equip/Unlock" button
 func _on_buy_pressed() -> void:

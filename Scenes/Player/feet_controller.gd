@@ -77,7 +77,17 @@ func _physics_process(delta):
 				up_vector = Vector3.FORWARD
 				
 			# Base target: Looking at the pivot
+			#var look_transform := new_transform.looking_at(pivot.global_position, up_vector)
+			#var base_quat := Quaternion(look_transform.basis.orthonormalized())
 			var look_transform := new_transform.looking_at(pivot.global_position, up_vector)
+
+			var euler = look_transform.basis.get_euler()
+
+# Prevent downward rotation
+			euler.x = clamp(euler.x, deg_to_rad(-80.0), 0.0)
+
+			look_transform.basis = Basis.from_euler(euler)
+
 			var base_quat := Quaternion(look_transform.basis.orthonormalized())
 			
 			# --- The New Tilt Logic ---
@@ -85,7 +95,8 @@ func _physics_process(delta):
 			var yaw_angle := _drag_velocity.x * tilt_multiplier
 			
 			var max_rads := deg_to_rad(max_tilt_degrees)
-			pitch_angle = clamp(pitch_angle, -max_rads, max_rads)
+			#pitch_angle = clamp(pitch_angle, -max_rads, max_rads)
+			pitch_angle = clamp(pitch_angle, 0.0, max_rads)
 			yaw_angle = clamp(yaw_angle, -max_rads, max_rads)
 			
 			var tilt_quat := Quaternion.from_euler(Vector3(pitch_angle, yaw_angle, 0))
@@ -112,7 +123,7 @@ func _physics_process(delta):
 	new_transform.basis.x *= current_scale.x
 	new_transform.basis.y *= current_scale.y
 	new_transform.basis.z *= current_scale.z
-	
+	#euler.x = clamp(euler.x, 0.0, deg_to_rad(80.0))
 	# 3. Apply everything back
 	global_transform = new_transform
 

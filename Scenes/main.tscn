@@ -605,25 +605,26 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("21_6vcvc")
 
-[node name="Equip" type="TextureButton" parent="UI/Wardrobe" unique_id=988953186]
-custom_minimum_size = Vector2(500, 300)
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Wardrobe" unique_id=877153670]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -198.0
-offset_top = 414.0
-offset_right = 202.0
-offset_bottom = 714.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -509.0
+offset_bottom = -5.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+theme_override_constants/separation = 44
+
+[node name="Equip" type="TextureButton" parent="UI/Wardrobe/VBoxContainer" unique_id=988953186]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
 texture_normal = ExtResource("21_1w6v2")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="UI/Wardrobe/Equip" unique_id=1231709738]
+[node name="Label" type="Label" parent="UI/Wardrobe/VBoxContainer/Equip" unique_id=1231709738]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -645,15 +646,13 @@ text = "1000 coins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BottomBarBack" type="NinePatchRect" parent="UI/Wardrobe" unique_id=82055144]
+[node name="BottomBarBack" type="NinePatchRect" parent="UI/Wardrobe/VBoxContainer" unique_id=82055144]
 custom_minimum_size = Vector2(0, 160)
-layout_mode = 0
-offset_top = 1659.0
-offset_right = 1077.0
-offset_bottom = 1819.0
+layout_mode = 2
+size_flags_vertical = 8
 texture = ExtResource("22_ueoa1")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Wardrobe/BottomBarBack" unique_id=1720216505]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Wardrobe/VBoxContainer/BottomBarBack" unique_id=1720216505]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -661,14 +660,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Wardrobe/BottomBarBack/MarginContainer" unique_id=972801241]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer" unique_id=972801241]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Player" type="TextureButton" parent="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer" unique_id=1254008324]
+[node name="Player" type="TextureButton" parent="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer" unique_id=1254008324]
 custom_minimum_size = Vector2(325, 150)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -676,7 +675,7 @@ texture_normal = ExtResource("21_1w6v2")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer/Player" unique_id=59531884]
+[node name="Label" type="Label" parent="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Player" unique_id=59531884]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -696,7 +695,7 @@ text = "Player"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Ball" type="TextureButton" parent="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer" unique_id=878419227]
+[node name="Ball" type="TextureButton" parent="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer" unique_id=878419227]
 custom_minimum_size = Vector2(325, 150)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -704,7 +703,7 @@ texture_normal = ExtResource("21_1w6v2")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer/Ball" unique_id=1452578011]
+[node name="Label" type="Label" parent="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Ball" unique_id=1452578011]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -724,7 +723,7 @@ text = "Ball"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Shoes" type="TextureButton" parent="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer" unique_id=1086552687]
+[node name="Shoes" type="TextureButton" parent="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer" unique_id=1086552687]
 custom_minimum_size = Vector2(325, 150)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -732,7 +731,7 @@ texture_normal = ExtResource("21_1w6v2")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer/Shoes" unique_id=2029961864]
+[node name="Label" type="Label" parent="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Shoes" unique_id=2029961864]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -856,19 +855,20 @@ texture = ExtResource("28_jwpg7")
 
 [node name="TextureRect" type="TextureRect" parent="UI/leaderboard/TextureRect" unique_id=951133698]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -491.0
-offset_top = -1528.0
+offset_top = -627.00006
 offset_right = 357.0
-offset_bottom = -190.87244
+offset_bottom = 627.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 scale = Vector2(1.1638092, 1.094703)
 texture = ExtResource("29_k2e45")
+stretch_mode = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/leaderboard/TextureRect/TextureRect" unique_id=972646841]
 layout_mode = 1
@@ -1057,7 +1057,7 @@ transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -1.9
 shape = SubResource("BoxShape3D_bo1nx")
 
 [node name="Player" type="Node3D" parent="." unique_id=248785851]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2.684, -3.513)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 2.684, -3.0077374)
 
 [node name="PlayerBody" parent="Player" unique_id=977454013 instance=ExtResource("18_hibaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -1066,12 +1066,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 1.7116173e-07, -2.4587438, -1.1335528)
 
 [node name="ball" parent="." unique_id=1078967228 instance=ExtResource("11_jkdf5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.832423, -2.334468)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 4.832423, -1.8292053)
 
 [node name="Coinspawner" type="Node3D" parent="." unique_id=1575771183]
 script = ExtResource("37_jwpg7")
 object_to_spawn = ExtResource("38_k2e45")
-fixed_z_position = -2.334
 min_x = -1.639
 max_x = 1.546
 min_y = 1.047
@@ -1086,13 +1085,13 @@ max_y = 5.943
 [connection signal="pressed" from="UI/GameOver/ManuBack/RetryButton" to="UI/GameOver" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="UI/GameOver/ManuBack/MenuButton" to="UiManager" method="_on_back_btn_pressed"]
 [connection signal="pressed" from="UI/Shop/BackGround/Back" to="UiManager" method="_on_back_btn_pressed"]
-[connection signal="pressed" from="UI/Wardrobe/Equip" to="UI/Wardrobe" method="_on_buy_pressed"]
-[connection signal="pressed" from="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer/Player" to="UiManager" method="_on_player_pressed"]
-[connection signal="pressed" from="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer/Player" to="UI/Wardrobe" method="_on_player_pressed"]
-[connection signal="pressed" from="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer/Ball" to="UiManager" method="_on_ball_pressed"]
-[connection signal="pressed" from="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer/Ball" to="UI/Wardrobe" method="_on_ball_pressed"]
-[connection signal="pressed" from="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer/Shoes" to="UiManager" method="_on_place_pressed"]
-[connection signal="pressed" from="UI/Wardrobe/BottomBarBack/MarginContainer/HBoxContainer/Shoes" to="UI/Wardrobe" method="_on_shoes_pressed"]
+[connection signal="pressed" from="UI/Wardrobe/VBoxContainer/Equip" to="UI/Wardrobe" method="_on_buy_pressed"]
+[connection signal="pressed" from="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Player" to="UiManager" method="_on_player_pressed"]
+[connection signal="pressed" from="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Player" to="UI/Wardrobe" method="_on_player_pressed"]
+[connection signal="pressed" from="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Ball" to="UiManager" method="_on_ball_pressed"]
+[connection signal="pressed" from="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Ball" to="UI/Wardrobe" method="_on_ball_pressed"]
+[connection signal="pressed" from="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Shoes" to="UiManager" method="_on_place_pressed"]
+[connection signal="pressed" from="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Shoes" to="UI/Wardrobe" method="_on_shoes_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/Previous" to="UI/Wardrobe" method="_on_previous_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/Next" to="UI/Wardrobe" method="_on_next_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/Back" to="UiManager" method="_on_back_btn_pressed"]

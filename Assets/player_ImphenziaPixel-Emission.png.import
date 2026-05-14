@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://kpcuamken4n7"
 path.s3tc="res://.godot/imported/player_ImphenziaPixel-Emission.png-9bc9af36ba5583c24d9327b024e70fc3.s3tc.ctex"
+path.etc2="res://.godot/imported/player_ImphenziaPixel-Emission.png-9bc9af36ba5583c24d9327b024e70fc3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/player_ImphenziaPixel-Emission.png"
-dest_files=["res://.godot/imported/player_ImphenziaPixel-Emission.png-9bc9af36ba5583c24d9327b024e70fc3.s3tc.ctex"]
+dest_files=["res://.godot/imported/player_ImphenziaPixel-Emission.png-9bc9af36ba5583c24d9327b024e70fc3.s3tc.ctex", "res://.godot/imported/player_ImphenziaPixel-Emission.png-9bc9af36ba5583c24d9327b024e70fc3.etc2.ctex"]
 
 [params]
 

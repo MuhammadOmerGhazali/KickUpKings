@@ -2,6 +2,7 @@ extends RigidBody3D
 
 signal hit_floor
 signal hit_foot 
+signal hit_coin(body : Node)
 
 # Change "$MeshInstance3D" to the actual name/path of your ball's visual mesh
 @onready var ball_mesh: MeshInstance3D = $new/Simple
@@ -11,15 +12,16 @@ signal hit_foot
 var current_skin_index: int = 0
 
 # --- Physics Variables ---
-@export var max_speed: float = 10
+@export var max_speed: float = 15
 @export var max_angular_speed: float = 2.0
-var z_fixed_position: float = 0.0
+var z_fixed_position: float = -1.829
 var can_score: bool = true
 
 var initial_position: Vector3
 
 func _ready() -> void:
 	z_fixed_position = global_position.z
+	#axis_lock_linear_z = true
 	initial_position = global_position
 	freeze = true
 	contact_monitor = true
@@ -104,17 +106,39 @@ func previous_skin():
 	apply_skin(prev_index)
 
 # --- Gameplay Logic ---
-
 func _on_body_entered(body: Node):
 	if body.is_in_group("feet") and can_score:
 		can_score = false
 		hit_foot.emit()
+
+		# Direction from foot to ball
+		var kick_direction = (global_position - body.global_position).normalized()
+
+		# Add upward lift (optional)
+		kick_direction.y += 0.3
+		kick_direction = kick_direction.normalized()
+
+		# Kick power
+		var kick_force = 3
+
+		# Apply extra force
+		apply_central_impulse(kick_direction * kick_force)
+
+		# Optional spin
+		angular_velocity += Vector3(
+			randf_range(-2.0, 2.0),
+			randf_range(-2.0, 2.0),
+			randf_range(-2.0, 2.0)
+		)
+
 		await get_tree().create_timer(0.2).timeout
 		can_score = true
-	
 	if body.is_in_group("floor") or body.name == "Floor":
 		hit_floor.emit()
-
+	elif body.is_in_group("coin"):
+		hit_coin.emit()
+		
+	
 func _physics_process(_delta):
 	global_position.z = z_fixed_position
 	

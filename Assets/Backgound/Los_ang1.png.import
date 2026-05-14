@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyhmhyi1xltqo"
 path.s3tc="res://.godot/imported/Los_ang1.png-01db9e6e7ef3dd8d59d07d9e1c697325.s3tc.ctex"
+path.etc2="res://.godot/imported/Los_ang1.png-01db9e6e7ef3dd8d59d07d9e1c697325.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Backgound/Los_ang1.png"
-dest_files=["res://.godot/imported/Los_ang1.png-01db9e6e7ef3dd8d59d07d9e1c697325.s3tc.ctex"]
+dest_files=["res://.godot/imported/Los_ang1.png-01db9e6e7ef3dd8d59d07d9e1c697325.s3tc.ctex", "res://.godot/imported/Los_ang1.png-01db9e6e7ef3dd8d59d07d9e1c697325.etc2.ctex"]
 
 [params]
 
