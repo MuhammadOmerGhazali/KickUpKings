@@ -3,6 +3,7 @@ extends Node3D
 @export var ui_manager : UIManager 
 @export var audio_manager : AudioManager 
 @export var coin_spawner : CoinSpawner
+@export var leaderboard : Leaderboard
 
 @export var Ball : RigidBody3D
 @export var playerBody : PlayerBody
@@ -65,6 +66,7 @@ func _on_game_over() -> void:
 	var is_new_record = DataManager.update_high_score(current_score)
 	if is_new_record:
 		audio_manager.play_highscore()
+		leaderboard.sync_leaderboard_data()
 	else:
 		audio_manager.play_game_over()
 		

@@ -9,6 +9,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 100.0
 grow_horizontal = 2
 scale = Vector2(1, 2.7655644)
 size_flags_horizontal = 3

@@ -152,11 +152,12 @@ bounce = 0.5
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ueoa1"]
 bounce = 0.5
 
-[node name="Main" type="Node3D" unique_id=2055534405 node_paths=PackedStringArray("ui_manager", "audio_manager", "coin_spawner", "Ball", "playerBody", "FeetController")]
+[node name="Main" type="Node3D" unique_id=2055534405 node_paths=PackedStringArray("ui_manager", "audio_manager", "coin_spawner", "leaderboard", "Ball", "playerBody", "FeetController")]
 script = ExtResource("1_jjvhh")
 ui_manager = NodePath("UiManager")
 audio_manager = NodePath("AudioManager")
 coin_spawner = NodePath("Coinspawner")
+leaderboard = NodePath("UI/leaderboard")
 Ball = NodePath("ball")
 playerBody = NodePath("Player/PlayerBody")
 FeetController = NodePath("Player/FeetController")
@@ -203,23 +204,99 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.015686275, 0.12941177, 0.27058825, 1)
 
+[node name="TextureRect" type="TextureRect" parent="UI/StartMenu/Background" unique_id=1777815370]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gt3je")
+expand_mode = 4
+
+[node name="kick_up_txt" type="TextureRect" parent="UI/StartMenu/Background" unique_id=1183190733]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -367.0
+offset_top = 107.99999
+offset_right = 687.0
+offset_bottom = 694.0
+grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_k12tt")
+stretch_mode = 3
+
 [node name="GeminiGeneratedImage90u2Fe90u2Fe90u2" type="Sprite2D" parent="UI/StartMenu" unique_id=1725062744]
-position = Vector2(538, 961.5)
+visible = false
+position = Vector2(536.00006, 948)
 scale = Vector2(0.70703125, 0.68786335)
 texture = ExtResource("3_gt3je")
 
 [node name="SplashBanner" type="Sprite2D" parent="UI/StartMenu" unique_id=615087351]
+visible = false
 position = Vector2(527, 315)
 scale = Vector2(0.7542694, 0.7883959)
 texture = ExtResource("3_k12tt")
 
-[node name="bottombarback" type="VBoxContainer" parent="UI/StartMenu" unique_id=183710125]
+[node name="ColorRect" type="ColorRect" parent="UI/StartMenu" unique_id=1954723646]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -557.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+color = Color(0.011764706, 0.1254902, 0.2627451, 1)
+
+[node name="BottomBar" type="HBoxContainer" parent="UI/StartMenu/ColorRect" unique_id=61664413]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -375.0
+offset_top = -250.0
+offset_right = 375.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="ShopButton" type="TextureButton" parent="UI/StartMenu/ColorRect/BottomBar" unique_id=1613561799]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture_normal = ExtResource("6_u50mg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="LeaderBoardButton" type="TextureButton" parent="UI/StartMenu/ColorRect/BottomBar" unique_id=1599127911]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture_normal = ExtResource("7_cbgmd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="WardrobeButton" type="TextureButton" parent="UI/StartMenu/ColorRect/BottomBar" unique_id=1653269817]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+texture_normal = ExtResource("6_3pmx8")
+texture_focused = ExtResource("6_3pmx8")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="bottombarback" type="VBoxContainer" parent="UI/StartMenu" unique_id=183710125]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -6.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 0
@@ -228,11 +305,6 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 color = Color(0.13333334, 0.43529412, 0.69411767, 1)
-
-[node name="ColorRect" type="ColorRect" parent="UI/StartMenu/bottombarback" unique_id=1954723646]
-custom_minimum_size = Vector2(0, 550)
-layout_mode = 2
-color = Color(0.011764706, 0.1254902, 0.2627451, 1)
 
 [node name="PlayButton" type="TextureButton" parent="UI/StartMenu" unique_id=1684797868]
 custom_minimum_size = Vector2(300, 300)
@@ -243,48 +315,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -336.0
-offset_top = 226.0
+offset_top = 125.0
 offset_right = 330.0
-offset_bottom = 526.0
+offset_bottom = 425.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("5_gt3je")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="BottomBar" type="HBoxContainer" parent="UI/StartMenu" unique_id=61664413]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -460.0
-offset_top = -416.0
-offset_right = 448.0
-offset_bottom = -116.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="ShopButton" type="TextureButton" parent="UI/StartMenu/BottomBar" unique_id=1613561799]
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 2
-texture_normal = ExtResource("6_u50mg")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="LeaderBoardButton" type="TextureButton" parent="UI/StartMenu/BottomBar" unique_id=1599127911]
-custom_minimum_size = Vector2(299, 300)
-layout_mode = 2
-texture_normal = ExtResource("7_cbgmd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="WardrobeButton" type="TextureButton" parent="UI/StartMenu/BottomBar" unique_id=1653269817]
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 2
-texture_normal = ExtResource("6_3pmx8")
-texture_focused = ExtResource("6_3pmx8")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -469,6 +505,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Shop" type="Control" parent="UI" unique_id=2084113984]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -523,6 +560,7 @@ grow_vertical = 2
 texture = ExtResource("15_6vcvc")
 
 [node name="Wardrobe" type="Control" parent="UI" unique_id=201387901 node_paths=PackedStringArray("player_node", "ball_node", "shoe_node", "place_node")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -730,11 +768,15 @@ texture_normal = ExtResource("25_hpc6h")
 
 [node name="location" type="TextureButton" parent="UI/Wardrobe" unique_id=2113875540]
 custom_minimum_size = Vector2(325, 150)
-layout_mode = 0
-offset_left = 697.0
-offset_top = 45.0
-offset_right = 1022.0
-offset_bottom = 195.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -409.0
+offset_top = 51.0
+offset_right = -84.0
+offset_bottom = 201.0
+grow_horizontal = 0
 size_flags_horizontal = 3
 texture_normal = ExtResource("21_1w6v2")
 ignore_texture_size = true
@@ -761,7 +803,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="leaderboard" type="Control" parent="UI" unique_id=272155125]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -779,20 +820,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_gt3je")
 
-[node name="TextureRect2" type="TextureRect" parent="UI/leaderboard/TextureRect" unique_id=57851273]
+[node name="leader_board_txt" type="TextureRect" parent="UI/leaderboard/TextureRect" unique_id=57851273]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -393.0
-offset_top = 182.0
-offset_right = 564.0
-offset_bottom = 374.0
+anchors_preset = -1
+anchor_left = 0.5717593
+anchor_top = 0.09427083
+anchor_right = 0.5717593
+anchor_bottom = 0.09427083
+offset_left = -478.5
+offset_right = 478.5
+offset_bottom = 192.0
 grow_horizontal = 2
 scale = Vector2(0.83561206, 0.7303824)
 texture = ExtResource("28_jwpg7")
 
-[node name="TextureRect" type="TextureRect" parent="UI/leaderboard/TextureRect" unique_id=951133698]
+[node name="container" type="TextureRect" parent="UI/leaderboard/TextureRect" unique_id=951133698]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -809,7 +851,7 @@ scale = Vector2(1.1638092, 1.094703)
 texture = ExtResource("29_k2e45")
 stretch_mode = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/leaderboard/TextureRect/TextureRect" unique_id=972646841]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/leaderboard/TextureRect/container" unique_id=972646841]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -822,12 +864,12 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.017724, 0.9010295)
 
-[node name="ScoreList" type="VBoxContainer" parent="UI/leaderboard/TextureRect/TextureRect/ScrollContainer" unique_id=343569289]
+[node name="ScoreList" type="VBoxContainer" parent="UI/leaderboard/TextureRect/container/ScrollContainer" unique_id=343569289]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
-[node name="my rank" type="TextureRect" parent="UI/leaderboard/TextureRect/TextureRect" unique_id=801451263]
+[node name="my rank" type="TextureRect" parent="UI/leaderboard/TextureRect/container" unique_id=801451263]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -843,22 +885,26 @@ grow_vertical = 0
 scale = Vector2(0.9824344, 0.9390458)
 texture = ExtResource("30_536cc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/leaderboard/TextureRect/TextureRect/my rank" unique_id=1401161916]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/leaderboard/TextureRect/container/my rank" unique_id=1401161916]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -38.0
+offset_right = 375.0
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 150
+theme_override_constants/separation = 124
 
-[node name="TextureRect" type="TextureRect" parent="UI/leaderboard/TextureRect/TextureRect/my rank/HBoxContainer" unique_id=374503358]
+[node name="TextureRect" type="TextureRect" parent="UI/leaderboard/TextureRect/container/my rank/HBoxContainer" unique_id=374503358]
 layout_mode = 2
 texture = ExtResource("40_v2nl5")
 
-[node name="rank" type="Label" parent="UI/leaderboard/TextureRect/TextureRect/my rank/HBoxContainer/TextureRect" unique_id=1070903775]
+[node name="rank" type="Label" parent="UI/leaderboard/TextureRect/container/my rank/HBoxContainer/TextureRect" unique_id=1070903775]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -874,7 +920,7 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Name" type="Label" parent="UI/leaderboard/TextureRect/TextureRect/my rank/HBoxContainer" unique_id=1465414490]
+[node name="Name" type="Label" parent="UI/leaderboard/TextureRect/container/my rank/HBoxContainer" unique_id=1465414490]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("17_s8vy0")
@@ -883,7 +929,7 @@ text = "name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="score" type="Label" parent="UI/leaderboard/TextureRect/TextureRect/my rank/HBoxContainer" unique_id=1086435564]
+[node name="score" type="Label" parent="UI/leaderboard/TextureRect/container/my rank/HBoxContainer" unique_id=1086435564]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("17_s8vy0")
 theme_override_font_sizes/font_size = 50
@@ -893,10 +939,10 @@ vertical_alignment = 1
 
 [node name="backBtn" type="TextureButton" parent="UI/leaderboard" unique_id=1315665593]
 layout_mode = 1
-offset_left = 62.0
-offset_top = 32.0
-offset_right = 167.0
-offset_bottom = 136.0
+offset_left = 70.0
+offset_top = 88.0
+offset_right = 175.0
+offset_bottom = 192.0
 texture_normal = ExtResource("25_hpc6h")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=960871603]
@@ -1015,10 +1061,10 @@ max_x = 1.546
 min_y = 1.047
 max_y = 5.943
 
+[connection signal="pressed" from="UI/StartMenu/ColorRect/BottomBar/ShopButton" to="UiManager" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="UI/StartMenu/ColorRect/BottomBar/LeaderBoardButton" to="UiManager" method="_on_leader_board_button_pressed"]
+[connection signal="pressed" from="UI/StartMenu/ColorRect/BottomBar/WardrobeButton" to="UiManager" method="_on_wardrobe_button_pressed"]
 [connection signal="pressed" from="UI/StartMenu/PlayButton" to="UiManager" method="_on_play_button_pressed"]
-[connection signal="pressed" from="UI/StartMenu/BottomBar/ShopButton" to="UiManager" method="_on_shop_button_pressed"]
-[connection signal="pressed" from="UI/StartMenu/BottomBar/LeaderBoardButton" to="UiManager" method="_on_leader_board_button_pressed"]
-[connection signal="pressed" from="UI/StartMenu/BottomBar/WardrobeButton" to="UiManager" method="_on_wardrobe_button_pressed"]
 [connection signal="text_submitted" from="UI/StartMenu/Name/Label" to="UI/leaderboard" method="_on_label_text_submitted"]
 [connection signal="pressed" from="UI/Level/Back2" to="UiManager" method="_on_back_btn_pressed"]
 [connection signal="pressed" from="UI/GameOver/ManuBack/RetryButton" to="UI/GameOver" method="_on_retry_button_pressed"]

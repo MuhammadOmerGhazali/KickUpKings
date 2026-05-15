@@ -1,9 +1,11 @@
 extends Control
 
-@onready var list = $TextureRect/TextureRect/ScrollContainer/ScoreList
-@onready var my_score_label = $"TextureRect/TextureRect/my rank/HBoxContainer/score"
-@onready var my_rank_label = $"TextureRect/TextureRect/my rank/HBoxContainer/TextureRect/rank"
-@onready var rank_container = $"TextureRect/TextureRect/my rank"
+class_name Leaderboard
+
+@onready var list = $TextureRect/container/ScrollContainer/ScoreList
+@onready var my_score_label = $"TextureRect/container/my rank/HBoxContainer/score"
+@onready var my_rank_label = $"TextureRect/container/my rank/HBoxContainer/TextureRect/rank"
+@onready var rank_container = $"TextureRect/container/my rank"
 
 var row_scene = preload("res://Assets/leaderboard/leader_board_row.tscn")
 
@@ -24,7 +26,7 @@ func _ready():
 	#my_score_label.text = str(DataManager.save_data.high_score)
 	my_score_label.text = str(DataManager.leaderboard_cache.cached_player_score)
 	my_rank_label.text = str(DataManager.leaderboard_cache.cached_player_rank)
-	$"TextureRect/TextureRect/my rank/HBoxContainer/Name".text = DataManager.get_player_name()
+	$"TextureRect/container/my rank/HBoxContainer/Name".text = DataManager.get_player_name()
 	
 	# Build the list from cache if it exists
 	if DataManager.leaderboard_cache.top_scores.size() > 0:
