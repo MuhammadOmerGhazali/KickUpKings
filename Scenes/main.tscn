@@ -25,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://bhw2mqt1fbnkp" path="res://Assets/Backgound/grass.glb" id="12_h1bgf"]
 [ext_resource type="Texture2D" uid="uid://b05iucs0oeccn" path="res://Assets/UI/BackGround.png" id="13_gt3je"]
 [ext_resource type="Texture2D" uid="uid://cjkx2b3r8uyfw" path="res://Assets/UI/Shop/ShopHeader.png" id="14_u50mg"]
-[ext_resource type="Texture2D" uid="uid://bd2mnmm4vifyo" path="res://Assets/UI/Shop/Mycoins.png" id="15_6vcvc"]
 [ext_resource type="PackedScene" uid="uid://c2bs4qx712mv5" path="res://Scenes/feet.tscn" id="17_b3802"]
 [ext_resource type="FontFile" uid="uid://cflaixuetaulw" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="17_s8vy0"]
 [ext_resource type="PackedScene" uid="uid://onn0rcsigsga" path="res://Scenes/player.tscn" id="18_hibaj"]
@@ -37,8 +36,12 @@
 [ext_resource type="Texture2D" uid="uid://cm5agnsgwgrq7" path="res://Assets/UI/wardrobe/previous.png" id="24_hpc6h"]
 [ext_resource type="Texture2D" uid="uid://d4hg20gd38bbb" path="res://Assets/UI/LeaderBoard/back.png" id="25_hpc6h"]
 [ext_resource type="Texture2D" uid="uid://d0juyvydn5iuc" path="res://Assets/UI/wardrobe/next.png" id="25_kltya"]
+[ext_resource type="Texture2D" uid="uid://pvq38sguhx7j" path="res://Assets/UI/Shop/removeAds.png" id="26_54nrm"]
+[ext_resource type="Texture2D" uid="uid://diwey1d50bbac" path="res://Assets/UI/Shop/new/SmallCoinPack.png" id="27_55jeb"]
 [ext_resource type="Script" uid="uid://6nbuesy2l10u" path="res://Assets/leaderboard/leaderBoardScript.gd" id="27_hdf80"]
+[ext_resource type="Texture2D" uid="uid://cdbdgyl0drgf5" path="res://Assets/UI/Shop/new/coinsicon.png" id="28_gsvbx"]
 [ext_resource type="Texture2D" uid="uid://c07wmkgo37i8y" path="res://Assets/UI/LeaderBoard/Header.png" id="28_jwpg7"]
+[ext_resource type="Texture2D" uid="uid://umfmf5kcjqu4" path="res://Assets/UI/Shop/new/button.png" id="29_bv80c"]
 [ext_resource type="Texture2D" uid="uid://dbaxabygqhda4" path="res://Assets/UI/LeaderBoard/leaderboard border.png" id="29_k2e45"]
 [ext_resource type="Texture2D" uid="uid://cow0bf1c26yah" path="res://Assets/UI/LeaderBoard/mainplayerBack.png" id="30_536cc"]
 [ext_resource type="Script" uid="uid://bmvy5qaf3li1o" path="res://Scenes/coinspawner.gd" id="37_jwpg7"]
@@ -49,6 +52,15 @@
 [ext_resource type="Texture2D" uid="uid://b21tcfidsfhj3" path="res://Assets/Backgound/rooftop.png" id="43_jut3y"]
 [ext_resource type="Texture2D" uid="uid://uxtxcr1cuqds" path="res://Assets/Backgound/los_ang.png" id="45_55jeb"]
 [ext_resource type="Texture2D" uid="uid://r5scfi5lu87" path="res://Assets/Backgound/paris.png" id="46_gsvbx"]
+[ext_resource type="Script" uid="uid://cgd122cg1nbwe" path="res://Scripts/StoreManager.gd" id="53_55jeb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55jeb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gsvbx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bv80c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptfg5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_344ge"]
 sky_top_color = Color(0.20392157, 0.59607846, 0.85882354, 1)
@@ -505,7 +517,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Shop" type="Control" parent="UI" unique_id=2084113984]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -524,10 +535,10 @@ color = Color(0.17641899, 0.17641914, 0.17641908, 0.9098039)
 
 [node name="Back" type="TextureButton" parent="UI/Shop/BackGround" unique_id=1906817610]
 layout_mode = 0
-offset_left = 58.000008
-offset_top = 473.00003
-offset_right = 163.0
-offset_bottom = 577.0
+offset_left = 34.000004
+offset_top = 39.0
+offset_right = 139.0
+offset_bottom = 143.0
 scale = Vector2(1.3, 1.3)
 texture_normal = ExtResource("25_hpc6h")
 
@@ -536,28 +547,366 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -480.0
-offset_top = 117.0
-offset_right = 474.0
-offset_bottom = 517.0
+offset_left = -336.0
+offset_top = 157.0
+offset_right = 375.0
+offset_bottom = 457.0
 grow_horizontal = 2
 texture = ExtResource("14_u50mg")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Mycoins" type="TextureRect" parent="UI/Shop/BackGround" unique_id=1157657108]
-visible = false
+[node name="remove_ad" type="TextureRect" parent="UI/Shop/BackGround" unique_id=1637121855]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -446.0
+offset_top = 481.0
+offset_right = 454.0
+offset_bottom = 831.0
+grow_horizontal = 2
+texture = ExtResource("26_54nrm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="UI/Shop/BackGround/remove_ad" unique_id=380978421]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_55jeb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop/BackGround" unique_id=1291539257]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -459.0
-offset_top = -501.0
-offset_right = 449.0
-offset_bottom = -326.99988
+offset_left = -456.0
+offset_top = -114.0
+offset_right = 457.0
+offset_bottom = 810.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_6vcvc")
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Shop/BackGround/VBoxContainer" unique_id=397777498]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer" unique_id=1071250794]
+layout_mode = 2
+texture = ExtResource("27_55jeb")
+
+[node name="Button2" type="Button" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect" unique_id=1271928128]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gsvbx")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect" unique_id=762377129]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.5
+offset_top = 43.0
+offset_right = 100.5
+offset_bottom = 167.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 90
+text = "1000"
+
+[node name="Coinsicon" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect" unique_id=414287187]
+position = Vector2(155.5, 213)
+texture = ExtResource("28_gsvbx")
+
+[node name="Button" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect" unique_id=1600677289]
+position = Vector2(149.5, 374)
+texture = ExtResource("29_bv80c")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect/Button" unique_id=229032001]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -75.0
+offset_right = -38.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "$0.99"
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer" unique_id=1098890239]
+layout_mode = 2
+texture = ExtResource("27_55jeb")
+
+[node name="Button2" type="Button" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect2" unique_id=1147727917]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bv80c")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect2" unique_id=1870660661]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 43.0
+offset_right = 101.0
+offset_bottom = 167.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 90
+text = "3200"
+
+[node name="Coinsicon" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect2" unique_id=1352161623]
+position = Vector2(155.5, 213)
+texture = ExtResource("28_gsvbx")
+
+[node name="Button" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect2" unique_id=2043691264]
+position = Vector2(149.5, 374)
+texture = ExtResource("29_bv80c")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect2/Button" unique_id=888867446]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -75.0
+offset_right = -38.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "$2.99"
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer" unique_id=518433051]
+layout_mode = 2
+texture = ExtResource("27_55jeb")
+
+[node name="Button2" type="Button" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect3" unique_id=1850764735]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ptfg5")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect3" unique_id=287558030]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 43.0
+offset_right = 103.0
+offset_bottom = 167.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 90
+text = "5400"
+
+[node name="Coinsicon" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect3" unique_id=749370126]
+position = Vector2(155.5, 213)
+texture = ExtResource("28_gsvbx")
+
+[node name="Button" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect3" unique_id=1380651971]
+position = Vector2(149.5, 374)
+texture = ExtResource("29_bv80c")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect3/Button" unique_id=1725097053]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -75.0
+offset_right = -38.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "$4.99"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/Shop/BackGround/VBoxContainer" unique_id=39905675]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2" unique_id=1873143266]
+layout_mode = 2
+texture = ExtResource("27_55jeb")
+
+[node name="Button2" type="Button" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect" unique_id=641635494]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ptfg5")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect" unique_id=1047350428]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.5
+offset_top = 43.0
+offset_right = 111.5
+offset_bottom = 167.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 85
+text = "10750"
+
+[node name="Coinsicon" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect" unique_id=730603664]
+position = Vector2(155.5, 213)
+texture = ExtResource("28_gsvbx")
+
+[node name="Button" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect" unique_id=1474286821]
+position = Vector2(149.5, 374)
+texture = ExtResource("29_bv80c")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect/Button" unique_id=445564627]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -75.0
+offset_right = -38.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "$9.99"
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2" unique_id=863947027]
+layout_mode = 2
+texture = ExtResource("27_55jeb")
+
+[node name="Button2" type="Button" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect2" unique_id=2061682003]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ptfg5")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect2" unique_id=2096448479]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.0
+offset_top = 43.0
+offset_right = 111.0
+offset_bottom = 167.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 83
+text = "16200"
+
+[node name="Coinsicon" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect2" unique_id=1377139457]
+position = Vector2(155.5, 213)
+texture = ExtResource("28_gsvbx")
+
+[node name="Button" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect2" unique_id=1019106298]
+position = Vector2(149.5, 374)
+texture = ExtResource("29_bv80c")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect2/Button" unique_id=1770013085]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.5
+offset_top = -75.0
+offset_right = -34.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "$14.99"
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2" unique_id=763471593]
+layout_mode = 2
+texture = ExtResource("27_55jeb")
+
+[node name="Button2" type="Button" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect3" unique_id=1413633783]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ptfg5")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect3" unique_id=638572517]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 43.0
+offset_right = 121.0
+offset_bottom = 167.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 83
+text = "26000"
+
+[node name="Coinsicon" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect3" unique_id=1659884737]
+position = Vector2(155.5, 213)
+texture = ExtResource("28_gsvbx")
+
+[node name="Button" type="Sprite2D" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect3" unique_id=1070719809]
+position = Vector2(149.5, 374)
+texture = ExtResource("29_bv80c")
+
+[node name="Label" type="Label" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect3/Button" unique_id=503333059]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -75.0
+offset_right = -30.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "$24.99"
 
 [node name="Wardrobe" type="Control" parent="UI" unique_id=201387901 node_paths=PackedStringArray("player_node", "ball_node", "shoe_node", "place_node")]
 visible = false
@@ -803,6 +1152,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="leaderboard" type="Control" parent="UI" unique_id=272155125]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1061,6 +1411,9 @@ max_x = 1.546
 min_y = 1.047
 max_y = 5.943
 
+[node name="StoreManager" type="Node3D" parent="." unique_id=1844236431]
+script = ExtResource("53_55jeb")
+
 [connection signal="pressed" from="UI/StartMenu/ColorRect/BottomBar/ShopButton" to="UiManager" method="_on_shop_button_pressed"]
 [connection signal="pressed" from="UI/StartMenu/ColorRect/BottomBar/LeaderBoardButton" to="UiManager" method="_on_leader_board_button_pressed"]
 [connection signal="pressed" from="UI/StartMenu/ColorRect/BottomBar/WardrobeButton" to="UiManager" method="_on_wardrobe_button_pressed"]
@@ -1070,6 +1423,13 @@ max_y = 5.943
 [connection signal="pressed" from="UI/GameOver/ManuBack/RetryButton" to="UI/GameOver" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="UI/GameOver/ManuBack/MenuButton" to="UiManager" method="_on_back_btn_pressed"]
 [connection signal="pressed" from="UI/Shop/BackGround/Back" to="UiManager" method="_on_back_btn_pressed"]
+[connection signal="pressed" from="UI/Shop/BackGround/remove_ad/Button" to="StoreManager" method="_on_remove_ad_pressed"]
+[connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect/Button2" to="StoreManager" method="_on_1000_coin_pressed"]
+[connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect2/Button2" to="StoreManager" method="_on_3200_coin_pressed"]
+[connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect3/Button2" to="StoreManager" method="_on_5400_Coin_pressed"]
+[connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect/Button2" to="." method="_on_10750_coin_pressed"]
+[connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect2/Button2" to="StoreManager" method="_on_16200_coin_pressed"]
+[connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect3/Button2" to="StoreManager" method="_on_26000_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/VBoxContainer/Equip" to="UI/Wardrobe" method="_on_buy_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Player" to="UiManager" method="_on_player_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Player" to="UI/Wardrobe" method="_on_player_pressed"]
