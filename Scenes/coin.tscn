@@ -1,29 +1,18 @@
 [gd_scene format=3 uid="uid://14wtnkh7tseb"]
 
 [ext_resource type="Script" uid="uid://ii0vsysxut5v" path="res://Scenes/coin.gd" id="1_2qo34"]
+[ext_resource type="PackedScene" uid="uid://b1hep202f23ky" path="res://Assets/cojn.glb" id="2_jgi06"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgwqp"]
-albedo_color = Color(0.639597, 0.50870353, 1.92523e-07, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_2qo34"]
-material = SubResource("StandardMaterial3D_sgwqp")
-top_radius = 0.2
-bottom_radius = 0.2
-height = 0.041
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_jgi06"]
-height = 2.320797
-radius = 0.2
+[sub_resource type="SphereShape3D" id="SphereShape3D_g537i"]
+radius = 0.21161982
 
 [node name="Coin" type="Area3D" unique_id=1460061720 groups=["coin"]]
 script = ExtResource("1_2qo34")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=244832447]
-transform = Transform3D(0.99993736, 0.006230915, -0.009299442, -0.009518376, 0.036081463, -0.9993035, -0.005891047, 0.9993294, 0.0361385, 0, 0, 0)
-mesh = SubResource("CylinderMesh_2qo34")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1354260094]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.0383507e-08, -0.23754695)
-shape = SubResource("CylinderShape3D_jgi06")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.0383507e-08, -0.021357745)
+shape = SubResource("SphereShape3D_g537i")
+
+[node name="cojn" parent="." unique_id=1682239654 instance=ExtResource("2_jgi06")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

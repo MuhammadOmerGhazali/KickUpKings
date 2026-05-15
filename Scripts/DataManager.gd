@@ -65,10 +65,17 @@ func unlock_ball(index: int) -> void:
 		save_data.unlocked_balls.append(index)
 		save_game()
 
+func unlock_shoes(index: int) -> void:
+	if not save_data.unlocked_shoes.has(index):
+		save_data.unlocked_shoes.append(index)
+		save_game()
+
 func unlock_place(index: int) -> void:
 	if not save_data.unlocked_places.has(index):
 		save_data.unlocked_places.append(index)
 		save_game()
+
+
 
 func load_leaderboard_cache():
 	if FileAccess.file_exists(LEADERBOARD_CACHE_PATH):

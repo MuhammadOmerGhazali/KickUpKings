@@ -2,6 +2,11 @@ extends Area3D
 
 signal coin_collected1
 
+@export var rotation_speed: float = 2.0
+
+func _process(delta: float) -> void:
+	rotate_y(rotation_speed * delta)
+
 func _on_body_entered(body: Node3D) -> void:
 	print("body entered" + str(body))
 	if body.is_in_group("ball"):

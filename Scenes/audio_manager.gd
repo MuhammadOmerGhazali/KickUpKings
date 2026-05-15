@@ -10,6 +10,7 @@ class_name AudioManager
 @export var click_sfx: AudioStream
 @export var game_over_sfx: AudioStream
 @export var highscore_sfx: AudioStream
+@export var coin_collected_sfx: AudioStream
 
 @export_group("Settings")
 @export_range(0.0, 0.5) var pitch_range: float = 0.1 # Variation amount (0.1 = +/- 10%)
@@ -71,3 +72,6 @@ func play_game_over():
 
 func play_highscore():
 	_play_with_random_pitch(highscore_sfx)
+
+func play_coin_collected():
+	_play_with_random_pitch(coin_collected_sfx)

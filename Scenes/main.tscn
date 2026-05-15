@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bwug1jfsinmnj" path="res://Assets/UI/Buttons/shop button.png" id="6_u50mg"]
 [ext_resource type="AudioStream" uid="uid://dydqidy64i10s" path="res://Assets/Sounds/highscore2.mp3" id="7_aa8k8"]
 [ext_resource type="Texture2D" uid="uid://pppt2dl8u5fd" path="res://Assets/UI/Buttons/leaderboard.png" id="7_cbgmd"]
+[ext_resource type="AudioStream" uid="uid://hlqqjk2pwfbb" path="res://Assets/Sounds/point.mp3" id="10_55jeb"]
 [ext_resource type="Script" uid="uid://dt147uj45s1eu" path="res://Scenes/UI/level.gd" id="10_536cc"]
 [ext_resource type="Texture2D" uid="uid://jcy3rsga6ftc" path="res://Assets/UI/TryAgain/Menu.png" id="10_fevyy"]
 [ext_resource type="PackedScene" uid="uid://b6i3ksgr5g233" path="res://Scenes/ball.tscn" id="11_jkdf5"]
@@ -25,13 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://b05iucs0oeccn" path="res://Assets/UI/BackGround.png" id="13_gt3je"]
 [ext_resource type="Texture2D" uid="uid://cjkx2b3r8uyfw" path="res://Assets/UI/Shop/ShopHeader.png" id="14_u50mg"]
 [ext_resource type="Texture2D" uid="uid://bd2mnmm4vifyo" path="res://Assets/UI/Shop/Mycoins.png" id="15_6vcvc"]
-[ext_resource type="Texture2D" uid="uid://pvq38sguhx7j" path="res://Assets/UI/Shop/removeAds.png" id="15_cbgmd"]
-[ext_resource type="Texture2D" uid="uid://ja4gfb25qw2m" path="res://Assets/UI/Shop/CoinPackHeader.png" id="17_7k868"]
 [ext_resource type="PackedScene" uid="uid://c2bs4qx712mv5" path="res://Scenes/feet.tscn" id="17_b3802"]
 [ext_resource type="FontFile" uid="uid://cflaixuetaulw" path="res://Assets/Fonts/LuckiestGuy-Regular.ttf" id="17_s8vy0"]
 [ext_resource type="PackedScene" uid="uid://onn0rcsigsga" path="res://Scenes/player.tscn" id="18_hibaj"]
-[ext_resource type="Texture2D" uid="uid://da3q5u3fuvr1b" path="res://Assets/UI/Shop/SmallCoinPack.png" id="18_hpc6h"]
-[ext_resource type="Texture2D" uid="uid://inx7ijkgcb80" path="res://Assets/UI/Shop/MediumCoinPack.png" id="19_kltya"]
 [ext_resource type="Texture2D" uid="uid://dfthbuypv3g5v" path="res://Assets/UI/wardrobe/button1.png" id="21_1w6v2"]
 [ext_resource type="Texture2D" uid="uid://bixihb7e8um7d" path="res://Assets/UI/wardrobe/Fade.png" id="21_6vcvc"]
 [ext_resource type="Script" uid="uid://b65ro8sv0n5ro" path="res://Scenes/camera/camera.gd" id="21_7k868"]
@@ -183,6 +180,7 @@ kick_sfx = ExtResource("5_kwxat")
 click_sfx = ExtResource("6_kqrg6")
 game_over_sfx = ExtResource("6_kwxat")
 highscore_sfx = ExtResource("7_aa8k8")
+coin_collected_sfx = ExtResource("10_55jeb")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=243350006]
 layer = -1
@@ -471,7 +469,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Shop" type="Control" parent="UI" unique_id=2084113984]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -479,21 +476,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackGround" type="TextureRect" parent="UI/Shop" unique_id=1660287434]
-layout_mode = 0
-offset_left = -14.0
-offset_top = -31.000004
-offset_right = 1522.0
-offset_bottom = 2721.0
-scale = Vector2(0.72, 0.72)
-texture = ExtResource("13_gt3je")
+[node name="BackGround" type="ColorRect" parent="UI/Shop" unique_id=366747907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.17641899, 0.17641914, 0.17641908, 0.9098039)
 
 [node name="Back" type="TextureButton" parent="UI/Shop/BackGround" unique_id=1906817610]
 layout_mode = 0
-offset_left = 91.66668
-offset_top = 126.388916
-offset_right = 196.66669
-offset_bottom = 230.38892
+offset_left = 58.000008
+offset_top = 473.00003
+offset_right = 163.0
+offset_bottom = 577.0
 scale = Vector2(1.3, 1.3)
 texture_normal = ExtResource("25_hpc6h")
 
@@ -502,86 +499,28 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -472.1667
-offset_top = 338.8889
-offset_right = 481.83325
-offset_bottom = 738.8889
+offset_left = -480.0
+offset_top = 117.0
+offset_right = 474.0
+offset_bottom = 517.0
 grow_horizontal = 2
 texture = ExtResource("14_u50mg")
 
 [node name="Mycoins" type="TextureRect" parent="UI/Shop/BackGround" unique_id=1157657108]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -468.0
-offset_top = -546.8334
-offset_right = 440.0
-offset_bottom = -372.83325
+offset_left = -459.0
+offset_top = -501.0
+offset_right = 449.0
+offset_bottom = -326.99988
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_6vcvc")
-
-[node name="RemoveAdsBack" type="TextureRect" parent="UI/Shop/BackGround" unique_id=1218543849]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -716.6111
-offset_top = -324.61108
-offset_right = 191.38892
-offset_bottom = -150.61096
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("15_cbgmd")
-
-[node name="TextureRect" type="TextureRect" parent="UI/Shop/BackGround" unique_id=377033971]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -568.0
-offset_top = 97.611084
-offset_right = -14.0
-offset_bottom = 189.61108
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-texture = ExtResource("17_7k868")
-
-[node name="TextureRect2" type="TextureRect" parent="UI/Shop/BackGround" unique_id=1888706316]
-layout_mode = 0
-offset_left = 68.05556
-offset_top = 1790.2778
-offset_right = 359.05554
-offset_bottom = 2242.2778
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("18_hpc6h")
-
-[node name="TextureRect3" type="TextureRect" parent="UI/Shop/BackGround" unique_id=77328300]
-layout_mode = 0
-offset_left = 533.3333
-offset_top = 1768.0554
-offset_right = 844.3333
-offset_bottom = 2238.0554
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("19_kltya")
-
-[node name="TextureRect4" type="TextureRect" parent="UI/Shop/BackGround" unique_id=418101503]
-layout_mode = 0
-offset_left = 1034.7222
-offset_top = 1793.0554
-offset_right = 1325.7223
-offset_bottom = 2245.0554
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("18_hpc6h")
 
 [node name="Wardrobe" type="Control" parent="UI" unique_id=201387901 node_paths=PackedStringArray("player_node", "ball_node", "shoe_node", "place_node")]
 layout_mode = 3
@@ -1066,7 +1005,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 1.7116173e-07, -2.4587438, -1.1335528)
 
 [node name="ball" parent="." unique_id=1078967228 instance=ExtResource("11_jkdf5")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 4.832423, -1.8292053)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.832423, -1.8292053)
 
 [node name="Coinspawner" type="Node3D" parent="." unique_id=1575771183]
 script = ExtResource("37_jwpg7")

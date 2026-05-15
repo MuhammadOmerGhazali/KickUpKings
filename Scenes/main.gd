@@ -11,7 +11,7 @@ extends Node3D
 var game_running : bool = false
 
 var current_score = 0
-var current_coins 
+
 
 func _ready() -> void:
 	audio_manager.play_music()
@@ -44,6 +44,7 @@ func _on_score_increased() -> void:
 	
 
 func _on_coin_increased() -> void:
+	audio_manager.play_coin_collected()
 	DataManager.add_coins(1)
 	print(DataManager.save_data.coins)
 
