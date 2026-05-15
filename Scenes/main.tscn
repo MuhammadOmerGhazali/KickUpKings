@@ -561,10 +561,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -446.0
-offset_top = 481.0
-offset_right = 454.0
-offset_bottom = 831.0
+offset_left = -519.0
+offset_top = 405.0
+offset_right = 512.0
+offset_bottom = 824.0
 grow_horizontal = 2
 texture = ExtResource("26_54nrm")
 expand_mode = 1
@@ -586,17 +586,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -456.0
-offset_top = -114.0
-offset_right = 457.0
-offset_bottom = 810.0
+offset_left = -508.0
+offset_top = -176.0
+offset_right = 498.0
+offset_bottom = 901.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 70
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Shop/BackGround/VBoxContainer" unique_id=397777498]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 60
 
 [node name="TextureRect" type="TextureRect" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer" unique_id=1071250794]
 layout_mode = 2
@@ -753,7 +753,7 @@ text = "$4.99"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UI/Shop/BackGround/VBoxContainer" unique_id=39905675]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 60
 
 [node name="TextureRect" type="TextureRect" parent="UI/Shop/BackGround/VBoxContainer/HBoxContainer2" unique_id=1873143266]
 layout_mode = 2
@@ -1427,7 +1427,7 @@ script = ExtResource("53_55jeb")
 [connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect/Button2" to="StoreManager" method="_on_1000_coin_pressed"]
 [connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect2/Button2" to="StoreManager" method="_on_3200_coin_pressed"]
 [connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer/TextureRect3/Button2" to="StoreManager" method="_on_5400_Coin_pressed"]
-[connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect/Button2" to="." method="_on_10750_coin_pressed"]
+[connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect/Button2" to="StoreManager" method="_on_10750_coin_pressed"]
 [connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect2/Button2" to="StoreManager" method="_on_16200_coin_pressed"]
 [connection signal="pressed" from="UI/Shop/BackGround/VBoxContainer/HBoxContainer2/TextureRect3/Button2" to="StoreManager" method="_on_26000_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/VBoxContainer/Equip" to="UI/Wardrobe" method="_on_buy_pressed"]

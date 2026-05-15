@@ -33,3 +33,7 @@ func _on_16200_coin_pressed() -> void:
 
 func _on_26000_pressed() -> void:
 	pass # Replace with function body.
+
+
+func _on_10750_coin_pressed() -> void:
+	pass # Replace with function body.

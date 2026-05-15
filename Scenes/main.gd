@@ -90,7 +90,3 @@ func game_logic_reset():
 	coin_spawner.clear_coins()
 	current_score = 0
 	ui_manager.changeScore(0)
-
-
-func _on_10750_coin_pressed() -> void:
-	pass # Replace with function body.
