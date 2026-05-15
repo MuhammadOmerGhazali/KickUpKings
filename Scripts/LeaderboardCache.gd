@@ -2,6 +2,12 @@
 extends Resource
 class_name LeaderboardCache
 
-# We store scores as an Array of Dictionaries to make saving/loading simple
-@export var top_scores: Array = [] 
+# Top leaderboard entries
+@export var top_scores: Array = []
+
+# Cache timestamp
 @export var last_updated: String = ""
+
+# NEW: Cached player info
+@export var cached_player_rank: String = ""
+@export var cached_player_score: int = 0

@@ -21,8 +21,9 @@ func _ready():
 	DataManager.load_leaderboard_cache()
 	
 	# Show player's local highscore while we wait for the server
-	my_score_label.text = str(DataManager.save_data.high_score)
-	my_rank_label.text = " "
+	#my_score_label.text = str(DataManager.save_data.high_score)
+	my_score_label.text = str(DataManager.leaderboard_cache.cached_player_score)
+	my_rank_label.text = str(DataManager.leaderboard_cache.cached_player_rank)
 	$"TextureRect/TextureRect/my rank/HBoxContainer/Name".text = DataManager.get_player_name()
 	
 	# Build the list from cache if it exists
@@ -57,6 +58,13 @@ func sync_leaderboard_data():
 		
 		if pos_result != null:
 			my_rank_label.text = str(pos_result.position)
+			# Cache player data
+			DataManager.leaderboard_cache.cached_player_rank = str(pos_result.position)
+			DataManager.leaderboard_cache.cached_player_score = int(top_score_obj.score)
+
+			# Save cache
+			#DataManager.save_leaderboard_cache(
+			#DataManager.leaderboard_cache.top_scores	)
 		else:
 			my_rank_label.text = " "
 	else:
