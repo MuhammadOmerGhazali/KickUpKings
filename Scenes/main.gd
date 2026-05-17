@@ -37,6 +37,8 @@ func _ready() -> void:
 	else:
 		push_error("Ball is not assigned in the Main script!")
 	ui_manager.retry_pressed.connect(reset_game)
+	
+	ui_manager.changecoin(DataManager.save_data.coins)
 
 func _on_score_increased() -> void:
 	audio_manager.play_kick()
@@ -47,7 +49,7 @@ func _on_score_increased() -> void:
 func _on_coin_increased() -> void:
 	audio_manager.play_coin_collected()
 	DataManager.add_coins(1)
-	print(DataManager.save_data.coins)
+	ui_manager.changecoin(DataManager.save_data.coins)
 
 func _on_foot_pressed() -> void:
 	if not game_running:

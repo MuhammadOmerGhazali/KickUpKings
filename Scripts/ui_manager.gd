@@ -65,6 +65,12 @@ func changeScore(new_score:int):
 func updateGameOver(final_score : int):
 	$"../UI/GameOver/ManuBack/FinalScoreLabel".text = str(final_score)
 
+func changecoin(new_coin:int):
+	$"../UI/Wardrobe/CoinBackground/CoinLabel".text = str(new_coin)
+	$"../UI/Shop/CoinBackground/CoinLabel".text = str(new_coin)
+	$"../UI/Level/CoinBackground/CoinLabel".text = str(new_coin)
+	
+
 
 func _on_retry_button_clicked():
 	$"../AudioManager".play_click()

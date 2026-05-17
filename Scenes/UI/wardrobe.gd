@@ -7,6 +7,8 @@ var current_state : state = state.Player
 @export var ball_node: RigidBody3D
 @export var shoe_node: Node3D 
 @export var place_node: Node3D
+@export var coin_label : Label
+#766226
 
 func _ready():
 
@@ -42,40 +44,47 @@ func update_shop_ui():
 	var is_unlocked: bool = false
 	var price: int = 0
 	var is_currently_equipped: bool = false
-	var high_score = DataManager.save_data.high_score
 	
 	match current_state:
 		state.Player:
 			var idx = player_node.current_skin_index
 			price = player_node.skins[idx].price
-			# Unlocked if in array OR if highscore is high enough
-			is_unlocked = DataManager.save_data.unlocked_skins.has(idx) or (high_score >= price)
+			is_unlocked = DataManager.save_data.unlocked_skins.has(idx)
 			is_currently_equipped = (idx == DataManager.save_data.current_skin_index)
 			
 		state.Ball:
 			var idx = ball_node.current_skin_index
 			price = ball_node.skins[idx].price
-			is_unlocked = DataManager.save_data.unlocked_balls.has(idx) or (high_score >= price)
+			is_unlocked = DataManager.save_data.unlocked_balls.has(idx)
 			is_currently_equipped = (idx == DataManager.save_data.current_ball_index)
 			
 		state.Shoes:
 			var idx = shoe_node.current_shoe_index
 			price = shoe_node.shoe_skins[idx].price
-			is_unlocked = DataManager.save_data.unlocked_shoes.has(idx) or (high_score >= price)
+			is_unlocked = DataManager.save_data.unlocked_shoes.has(idx)
 			is_currently_equipped = (idx == DataManager.save_data.current_shoe_index)
+
 		state.Place:
 			var idx = place_node.current_place_index
 			price = place_node.place_skins[idx].price
-			is_unlocked = DataManager.save_data.unlocked_places.has(idx) or (high_score >= price)
+			is_unlocked = DataManager.save_data.unlocked_places.has(idx)
 			is_currently_equipped = (idx == DataManager.save_data.current_place_index)
 
-	# Update the Label Text
+	# Update the Button Label Text
 	if is_currently_equipped:
 		$VBoxContainer/Equip/Label.text = "EQUIPPED"
 	elif is_unlocked:
 		$VBoxContainer/Equip/Label.text = "EQUIP"
 	else:
-		$VBoxContainer/Equip/Label.text = "REACH " + str(price) + " SCORE"
+		$VBoxContainer/Equip/Label.text = "BUY: " + str(price) + " COINS"
+	## Update the Label Text
+	#if is_currently_equipped:
+		#$VBoxContainer/Equip/Label.text = "EQUIPPED"
+	#elif is_unlocked:
+		#$VBoxContainer/Equip/Label.text = "EQUIP"
+	#else:
+		#$VBoxContainer/Equip/Label.text = "REACH " + str(price) + " SCORE"
+
 
 # This is the "Equip/Unlock" button
 func _on_buy_pressed() -> void:
@@ -94,24 +103,27 @@ func _on_buy_pressed() -> void:
 	update_shop_ui()
 
 ## Handles permanent unlocking via score and equipping
+## Handles permanent unlocking via spending coins, or equipping if already owned
 func handle_unlock_and_equip(item_index: int, resource_array: Array, unlocked_list: Array, save_key: String):
 	var price = resource_array[item_index].price
-	var high_score = DataManager.save_data.high_score
+	var current_coins = DataManager.save_data.coins
 
-	# 1. Check if the item is "Earned" (Score high enough) or already unlocked
-	if high_score >= price or unlocked_list.has(item_index):
-		
-		# 2. If it's not in the list yet, make it a permanent unlock
-		if not unlocked_list.has(item_index):
-			unlocked_list.append(item_index)
-		
-		# 3. Equip the item
+	# 1. If already unlocked, simply equip it
+	if unlocked_list.has(item_index):
 		DataManager.save_data.set(save_key, item_index)
 		DataManager.save_game()
-		print("Permanent unlock/equip successful!")
+		print("Equipped successfully!")
+		
+	# 2. If locked, check if the player has enough coins to purchase
+	elif current_coins >= price:
+		DataManager.save_data.coins -= price # Deduct the coins
+		unlocked_list.append(item_index)     # Save as permanently unlocked
+		DataManager.save_data.set(save_key, item_index) # Equip it
+		DataManager.save_game()              # Save game changes
+		print("Purchase and equip successful! Coins remaining: ", DataManager.save_data.coins)
 	else:
-		print("Score too low to unlock!")
-
+		print("Not enough coins to unlock this item!")
+	$"../../UiManager".changecoin(DataManager.save_data.coins)
 # --- Transitions & Previews ---
 
 func _on_player_pressed() -> void:
@@ -129,13 +141,13 @@ func _on_ball_pressed() -> void:
 func _on_shoes_pressed() -> void:
 	$"../../AudioManager".play_click()
 	change_state(state.Shoes)
-	$"../../CameraManager".goto_place()
+	$"../../CameraManager".goto_shoe()
 	reset_previews_to_equipped()
 
 func _on_location_pressed() -> void:
 	$"../../AudioManager".play_click()
 	change_state(state.Place)
-	$"../../CameraManager".goto_player()
+	$"../../CameraManager".goto_place()
 	reset_previews_to_equipped()
 
 func reset_previews_to_equipped():
@@ -146,3 +158,9 @@ func reset_previews_to_equipped():
 
 func _on_back_pressed() -> void:
 	reset_previews_to_equipped()
+
+
+
+func increase_coins(new_coin_num : int):
+	coin_label.text = str(new_coin_num)
+	

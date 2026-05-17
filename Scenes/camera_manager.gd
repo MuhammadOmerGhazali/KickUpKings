@@ -16,9 +16,9 @@ const PLAYER_ROT = Vector3(-5.5, 0, 0)
 const BALL_POS = Vector3(0, 5.043, 0.26)
 const BALL_ROT = Vector3(-5.5, 0, 0)
 
-# 4. Place View (Environment/POI)
-const PLACE_POS = Vector3(-0, 0.788, 0.254)
-const PLACE_ROT = Vector3(-3.3, 0, 0)
+# 4. Shoe View (Environment/POI)
+const SHOE_POS = Vector3(-0, 0.788, 0.254)
+const SHOE_ROT = Vector3(-3.3, 0, 0)
 
 # 5. Player Original
 const PLAYER_BODY_POS = Vector3(-0, 2.684, -3.513)
@@ -46,8 +46,11 @@ func goto_ball() -> void:
 	_tween_camera(BALL_POS, BALL_ROT)
 
 ## Moves camera to the specific Place
+func goto_shoe() -> void:
+	_tween_camera(SHOE_POS, SHOE_ROT)
+
 func goto_place() -> void:
-	_tween_camera(PLACE_POS, PLACE_ROT)
+	_tween_camera(LEVEL_POS, LEVEL_ROT)
 
 # Internal helper to handle the animation logic
 func _tween_camera(target_pos: Vector3, target_rot: Vector3, duration: float = 1.2) -> void:

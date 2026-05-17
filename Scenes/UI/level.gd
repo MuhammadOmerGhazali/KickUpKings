@@ -9,3 +9,8 @@ func _ready() -> void:
 
 func increase_score(new_score : int):
 	score_label.text = str(new_score)
+
+@export var coin_label : Label
+func increase_coins(new_coin_num : int):
+	coin_label.text = str(new_coin_num)
+	

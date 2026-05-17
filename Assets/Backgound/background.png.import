@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdbdgyl0drgf5"
-path="res://.godot/imported/coinsicon.png-3024fdaf7115604d203aff6d1e7710b9.ctex"
+uid="uid://qioyy75vio4m"
+path="res://.godot/imported/background.png-abc74ff8c7b17e98687ca2538836c26a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Shop/new/coinsicon.png"
-dest_files=["res://.godot/imported/coinsicon.png-3024fdaf7115604d203aff6d1e7710b9.ctex"]
+source_file="res://Assets/Backgound/background.png"
+dest_files=["res://.godot/imported/background.png-abc74ff8c7b17e98687ca2538836c26a.ctex"]
 
 [params]
 
