@@ -138,6 +138,7 @@ func _on_body_entered(body: Node):
 		await get_tree().create_timer(0.2).timeout
 		can_score = true
 	if body.is_in_group("floor") or body.name == "Floor":
+		freeze = true
 		hit_floor.emit()
 	elif body.is_in_group("coin"):
 		hit_coin.emit()

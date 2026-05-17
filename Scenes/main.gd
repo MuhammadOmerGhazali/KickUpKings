@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name Main
+
 @export var ui_manager : UIManager 
 @export var audio_manager : AudioManager 
 @export var coin_spawner : CoinSpawner
@@ -17,7 +19,7 @@ var current_score = 0
 func _ready() -> void:
 	audio_manager.play_music()
 	if coin_spawner != null:
-		coin_spawner.IncreaseCoin.connect(_on_coin_increased)
+		coin_spawner.IncreaseCoin.connect(_on_coin_increased.bind(1))
 		#coin_spawner.fixed_z_position = Ball.global_position.z
 	else:
 		push_error("CoinSpawner is not assigned in the Main script!")
@@ -47,10 +49,11 @@ func _on_score_increased() -> void:
 	current_score += 1
 	ui_manager.changeScore(current_score)
 	
-
-func _on_coin_increased() -> void:
+func add_coins(amount: int) -> void:
+	_on_coin_increased(amount)
+func _on_coin_increased(coin:int) -> void:
 	audio_manager.play_coin_collected()
-	DataManager.add_coins(1)
+	DataManager.add_coins(coin)
 	ui_manager.changecoin(DataManager.save_data.coins)
 
 func _on_foot_pressed() -> void:
@@ -101,7 +104,8 @@ func _on_menu_pressed() -> void:
 
 func _on_continue_pressed() -> void:
 	audio_manager.stop_music()
-	_on_rewarded_ad_completed()
+	revive()
+	#_on_rewarded_ad_completed()
 	
 func _on_rewarded_ad_completed() -> void:
 	continue_game()
@@ -112,5 +116,25 @@ func continue_game() -> void:
 	
 	ui_manager.change_menu(UIManager.Menu.LEVEL)
 	audio_manager.play_music()
+
+func revive() -> void:
+	var success: bool = AdManager.show_rewarded_ad()
+	if success:
+		await get_tree().create_timer(0.2).timeout
+		revive_success()
+		ui_manager.reward_msg()
+	if !success:
+		print("Ad not available")
+		ui_manager._ad_failed()
+func revive_success() -> void:
+	print("Player revived")
+	Ball.reset_ball()
+	playerBody.stop_head_turn()
 	
+	ui_manager.change_menu(UIManager.Menu.LEVEL)
+	audio_manager.play_music()
+
+
+#func _on_test_ad_pressed() -> void:
+	#get_tree().change_scene_to_file("res://addons/admob/gdscript/sample/Main.tscn")
 	

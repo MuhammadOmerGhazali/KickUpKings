@@ -88,3 +88,14 @@ func _on_menu_button_clicked():
 func _on_contine_button_clicked():
 	$"../AudioManager".play_click()
 	continue_pressed.emit()
+
+func _ad_failed():
+	$"../UI/Ad_failed_label".visible = true;
+	await get_tree().create_timer(2.0).timeout
+	$"../UI/Ad_failed_label".visible = false;
+	
+func reward_msg():
+	$"../UI/reward_msg".visible = true;
+	await get_tree().create_timer(2.0).timeout
+	$"../UI/reward_msg".visible = false;
+	

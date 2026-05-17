@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://71dldf07dd35" path="res://Scenes/UI/game_over.gd" id="12_aqgau"]
 [ext_resource type="Texture2D" uid="uid://dogpseakq84lr" path="res://Assets/UI/TryAgain/mainMenuButton.png" id="12_ee4r6"]
 [ext_resource type="PackedScene" uid="uid://bhw2mqt1fbnkp" path="res://Assets/Backgound/grass.glb" id="12_h1bgf"]
+[ext_resource type="Script" uid="uid://cpniwdu5jfb8n" path="res://Scenes/Ad_manager.gd" id="12_qax2n"]
 [ext_resource type="Texture2D" uid="uid://b05iucs0oeccn" path="res://Assets/UI/BackGround.png" id="13_gt3je"]
 [ext_resource type="Texture2D" uid="uid://cjkx2b3r8uyfw" path="res://Assets/UI/Shop/ShopHeader.png" id="14_u50mg"]
 [ext_resource type="PackedScene" uid="uid://c2bs4qx712mv5" path="res://Scenes/feet.tscn" id="17_b3802"]
@@ -197,6 +198,9 @@ coin_collected_sfx = ExtResource("10_55jeb")
 [node name="StoreManager" type="Node" parent="." unique_id=1806900042 node_paths=PackedStringArray("shop_ui")]
 script = ExtResource("11_gsvbx")
 shop_ui = NodePath("../UI/Shop")
+
+[node name="AdManager" type="Node" parent="." unique_id=5442687]
+script = ExtResource("12_qax2n")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=243350006]
 layer = -1
@@ -595,7 +599,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Shop" type="Control" parent="UI" unique_id=2084113984]
+[node name="Shop" type="Control" parent="UI" unique_id=2084113984 node_paths=PackedStringArray("main", "ui_manager")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -603,6 +608,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("26_bv80c")
+main = NodePath("../..")
+ui_manager = NodePath("../../UiManager")
 
 [node name="BackGround" type="TextureRect" parent="UI/Shop" unique_id=1323061886]
 layout_mode = 1
@@ -1531,6 +1538,36 @@ offset_top = 88.0
 offset_right = 175.0
 offset_bottom = 192.0
 texture_normal = ExtResource("25_hpc6h")
+
+[node name="Ad_failed_label" type="Label" parent="UI" unique_id=1556746901]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -23.0
+offset_right = 34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 80
+text = "Ad failed"
+
+[node name="reward_msg" type="Label" parent="UI" unique_id=174576125]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -23.0
+offset_right = 34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 80
+text = "rewarded"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=960871603]
 environment = SubResource("Environment_kry3j")
