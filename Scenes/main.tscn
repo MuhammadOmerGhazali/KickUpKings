@@ -21,7 +21,6 @@
 [ext_resource type="Script" uid="uid://bbief2x35hlat" path="res://Scenes/store_manager.gd" id="11_gsvbx"]
 [ext_resource type="PackedScene" uid="uid://b6i3ksgr5g233" path="res://Scenes/ball.tscn" id="11_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://dql2mimbqy3mu" path="res://Assets/UI/TryAgain/retry.png" id="11_pdsj5"]
-[ext_resource type="Script" uid="uid://cpniwdu5jfb8n" path="res://Scenes/Ad_manager.gd" id="12_2daye"]
 [ext_resource type="Script" uid="uid://71dldf07dd35" path="res://Scenes/UI/game_over.gd" id="12_aqgau"]
 [ext_resource type="Texture2D" uid="uid://dogpseakq84lr" path="res://Assets/UI/TryAgain/mainMenuButton.png" id="12_ee4r6"]
 [ext_resource type="PackedScene" uid="uid://bhw2mqt1fbnkp" path="res://Assets/Backgound/grass.glb" id="12_h1bgf"]
@@ -49,6 +48,10 @@
 [ext_resource type="Texture2D" uid="uid://dbaxabygqhda4" path="res://Assets/UI/LeaderBoard/leaderboard border.png" id="29_k2e45"]
 [ext_resource type="Texture2D" uid="uid://cow0bf1c26yah" path="res://Assets/UI/LeaderBoard/mainplayerBack.png" id="30_536cc"]
 [ext_resource type="Texture2D" uid="uid://kx7doucxxvu7" path="res://Assets/UI/Shop/new/removeAds_back.png" id="31_1semv"]
+[ext_resource type="Texture2D" uid="uid://c237ueo874mt8" path="res://Assets/UI/Shop/new/removeadd.png" id="32_6ml46"]
+[ext_resource type="Texture2D" uid="uid://clbyrbjv2rc1t" path="res://Assets/UI/Shop/new/small_coin.png" id="33_2060n"]
+[ext_resource type="Texture2D" uid="uid://mo71h3mv0kbk" path="res://Assets/UI/Shop/new/medium_coin.png" id="35_6ml46"]
+[ext_resource type="Texture2D" uid="uid://d37bn273xkart" path="res://Assets/UI/Shop/new/large_coin.png" id="36_qax2n"]
 [ext_resource type="Script" uid="uid://bmvy5qaf3li1o" path="res://Scenes/coinspawner.gd" id="37_jwpg7"]
 [ext_resource type="PackedScene" uid="uid://14wtnkh7tseb" path="res://Scenes/coin.tscn" id="38_k2e45"]
 [ext_resource type="Texture2D" uid="uid://e2lxn1ufvubc" path="res://Assets/UI/LeaderBoard/rank.png" id="40_v2nl5"]
@@ -195,9 +198,6 @@ coin_collected_sfx = ExtResource("10_55jeb")
 script = ExtResource("11_gsvbx")
 shop_ui = NodePath("../UI/Shop")
 
-[node name="AdManager" type="Node" parent="." unique_id=1139640563]
-script = ExtResource("12_2daye")
-
 [node name="UI" type="CanvasLayer" parent="." unique_id=243350006]
 layer = -1
 
@@ -211,7 +211,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="ColorRect" parent="UI/StartMenu" unique_id=498751276]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -467,7 +466,7 @@ text = "12"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameOver" type="Control" parent="UI" unique_id=1638915121]
+[node name="GameOver" type="Control" parent="UI" unique_id=1638915121 node_paths=PackedStringArray("continue_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -475,6 +474,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_aqgau")
+continue_button = NodePath("ContinueButton")
 
 [node name="Fade" type="TextureRect" parent="UI/GameOver" unique_id=1176755016]
 layout_mode = 1
@@ -506,10 +506,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 642.8571
-offset_top = 161.42859
-offset_right = 1154.8572
-offset_bottom = 356.4286
+offset_left = 641.25
+offset_top = 161.25
+offset_right = 1153.25
+offset_bottom = 356.25
 grow_vertical = 2
 texture_normal = ExtResource("11_pdsj5")
 
@@ -526,36 +526,6 @@ offset_right = -631.8572
 offset_bottom = 353.5714
 grow_horizontal = 0
 grow_vertical = 2
-texture_normal = ExtResource("12_ee4r6")
-
-[node name="revive" type="TextureButton" parent="UI/GameOver/ManuBack" unique_id=104204220]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -241.5
-offset_top = -75.0
-offset_right = 247.5
-offset_bottom = 120.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("12_ee4r6")
-
-[node name="testAd" type="TextureButton" parent="UI/GameOver/ManuBack" unique_id=1368935385]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -237.75
-offset_top = 152.5
-offset_right = 251.25
-offset_bottom = 347.5
-grow_horizontal = 2
-grow_vertical = 0
 texture_normal = ExtResource("12_ee4r6")
 
 [node name="FinalScoreLabel" type="Label" parent="UI/GameOver/ManuBack" unique_id=658787735]
@@ -581,8 +551,51 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ContinueButton" type="TextureButton" parent="UI/GameOver" unique_id=1552101929]
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_top = -626.0
+offset_right = 219.0
+offset_bottom = -476.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("21_1w6v2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/GameOver/ContinueButton" unique_id=1177566739]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -41.0
+offset_right = 159.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9490196, 0.8509804, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(0.18661559, 0.092515744, 0.0018248173, 1)
+theme_override_colors/font_outline_color = Color(0.44705883, 0.2784314, 0.07450981, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 40
+text = "Watch ad to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Shop" type="Control" parent="UI" unique_id=2084113984]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -601,474 +614,17 @@ grow_vertical = 2
 texture = ExtResource("25_55jeb")
 stretch_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/Shop" unique_id=1885451102]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("21_6vcvc")
-
-[node name="Back" type="TextureButton" parent="UI/Shop/TextureRect" unique_id=1906817610]
-layout_mode = 0
-offset_left = 34.000004
-offset_top = 39.0
-offset_right = 139.0
-offset_bottom = 143.0
-scale = Vector2(1.3, 1.3)
-texture_normal = ExtResource("25_hpc6h")
-
-[node name="ShopHeader" type="TextureRect" parent="UI/Shop/TextureRect" unique_id=1508570760]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -339.0
-offset_top = 119.0
-offset_right = 372.0
-offset_bottom = 419.0
-grow_horizontal = 2
-texture = ExtResource("14_u50mg")
-expand_mode = 1
-stretch_mode = 6
-
-[node name="remove_ad" type="TextureRect" parent="UI/Shop/TextureRect" unique_id=2115451755]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -459.0
-offset_top = 661.0
-offset_right = 451.0
-offset_bottom = 891.0
-grow_horizontal = 2
-texture = ExtResource("31_1semv")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="CoinPacks" type="VBoxContainer" parent="UI/Shop/TextureRect" unique_id=1291539257]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -456.0
-offset_top = -1009.0
-offset_right = 457.0
-offset_bottom = -75.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 30
-
-[node name="TopRow" type="HBoxContainer" parent="UI/Shop/TextureRect/CoinPacks" unique_id=397777498]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="TextureRect" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow" unique_id=1071250794]
-layout_mode = 2
-texture = ExtResource("27_55jeb")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect" unique_id=762377129]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 53.0
-offset_bottom = 144.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 90
-text = "1000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Coinsicon" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect" unique_id=1056534659]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.5
-offset_top = -80.5
-offset_right = 99.5
-offset_bottom = 80.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect" unique_id=210452311]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -120.5
-offset_top = -132.0
-offset_right = 117.5
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("29_bv80c")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect/Button" unique_id=229032001]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -35.0
-offset_right = 85.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 65
-text = "$0.99"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow" unique_id=576114740]
-layout_mode = 2
-texture = ExtResource("27_55jeb")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect2" unique_id=577288411]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 53.0
-offset_bottom = 144.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 90
-text = "1000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Coinsicon" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect2" unique_id=623328429]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.5
-offset_top = -80.5
-offset_right = 99.5
-offset_bottom = 80.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect2" unique_id=573581099]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -120.5
-offset_top = -132.0
-offset_right = 117.5
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("29_bv80c")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect2/Button" unique_id=1416760408]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -35.0
-offset_right = 85.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 65
-text = "$0.99"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect3" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow" unique_id=79509707]
-layout_mode = 2
-texture = ExtResource("27_55jeb")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect3" unique_id=1138592991]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 53.0
-offset_bottom = 144.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 90
-text = "1000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Coinsicon" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect3" unique_id=672054773]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.5
-offset_top = -80.5
-offset_right = 99.5
-offset_bottom = 80.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect3" unique_id=574081813]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -120.5
-offset_top = -132.0
-offset_right = 117.5
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("29_bv80c")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect3/Button" unique_id=656564988]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -35.0
-offset_right = 85.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 65
-text = "$0.99"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BottomRow" type="HBoxContainer" parent="UI/Shop/TextureRect/CoinPacks" unique_id=39905675]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="TextureRect4" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/BottomRow" unique_id=666194213]
-layout_mode = 2
-texture = ExtResource("27_55jeb")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect4" unique_id=1085446161]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 53.0
-offset_bottom = 144.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 90
-text = "1000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Coinsicon" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect4" unique_id=1428475934]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.5
-offset_top = -80.5
-offset_right = 99.5
-offset_bottom = 80.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect4" unique_id=1222340106]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -120.5
-offset_top = -132.0
-offset_right = 117.5
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("29_bv80c")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect4/Button" unique_id=836309764]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -35.0
-offset_right = 85.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 65
-text = "$0.99"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect5" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/BottomRow" unique_id=999846184]
-layout_mode = 2
-texture = ExtResource("27_55jeb")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect5" unique_id=717909257]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 53.0
-offset_bottom = 144.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 90
-text = "1000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Coinsicon" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect5" unique_id=662730357]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.5
-offset_top = -80.5
-offset_right = 99.5
-offset_bottom = 80.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect5" unique_id=1523278201]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -120.5
-offset_top = -132.0
-offset_right = 117.5
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("29_bv80c")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect5/Button" unique_id=139312411]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -35.0
-offset_right = 85.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 65
-text = "$0.99"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect6" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/BottomRow" unique_id=613497043]
-layout_mode = 2
-texture = ExtResource("27_55jeb")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect6" unique_id=1552250636]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 53.0
-offset_bottom = 144.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 90
-text = "1000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Coinsicon" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect6" unique_id=777636964]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.5
-offset_top = -80.5
-offset_right = 99.5
-offset_bottom = 80.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect6" unique_id=1752806790]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -120.5
-offset_top = -132.0
-offset_right = 117.5
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("29_bv80c")
-
-[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/BottomRow/TextureRect6/Button" unique_id=1180354445]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -35.0
-offset_right = 85.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("17_s8vy0")
-theme_override_font_sizes/font_size = 65
-text = "$0.99"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CoinBackground" type="TextureRect" parent="UI/Shop" unique_id=471153285]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
+anchor_top = 0.27600002
 anchor_right = 1.0
-offset_left = -300.0
-offset_top = 72.0
-offset_right = 3.0
-offset_bottom = 209.0
+anchor_bottom = 0.27600002
+offset_left = -364.0
+offset_top = -68.920044
+offset_right = -4.0
+offset_bottom = 68.079956
 grow_horizontal = 0
 texture = ExtResource("21_ptfg5")
 
@@ -1091,17 +647,467 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -164.0
-offset_top = -34.5
-offset_right = -28.0
-offset_bottom = 46.5
+offset_left = -209.0
+offset_top = -32.5
+offset_right = -73.0
+offset_bottom = 48.5
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("17_s8vy0")
 theme_override_font_sizes/font_size = 80
 text = "12"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/Shop" unique_id=1885451102]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_6vcvc")
+
+[node name="Back" type="TextureButton" parent="UI/Shop/TextureRect" unique_id=1906817610]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.056
+anchor_bottom = 0.056
+offset_left = 34.000004
+offset_top = -68.520004
+offset_right = 139.0
+offset_bottom = 35.479996
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("25_hpc6h")
+
+[node name="ShopHeader" type="TextureRect" parent="UI/Shop/TextureRect" unique_id=1508570760]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -333.0
+offset_top = 126.0
+offset_right = 378.0
+offset_bottom = 426.0
+grow_horizontal = 2
+texture = ExtResource("14_u50mg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CoinPacks" type="VBoxContainer" parent="UI/Shop/TextureRect" unique_id=1291539257]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50100005
+anchor_top = 0.5
+anchor_right = 0.50100005
+anchor_bottom = 0.5
+offset_left = -539.0801
+offset_top = -353.0
+offset_right = 510.91992
+offset_bottom = 957.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="remove_ad" type="NinePatchRect" parent="UI/Shop/TextureRect/CoinPacks" unique_id=1406785154]
+custom_minimum_size = Vector2(1000, 400)
+layout_mode = 2
+texture = ExtResource("31_1semv")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/remove_ad" unique_id=1698694537]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 69.0
+offset_top = -166.0
+offset_right = 399.0
+offset_bottom = 149.0
+grow_vertical = 2
+texture = ExtResource("32_6ml46")
+expand_mode = 1
+
+[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/remove_ad" unique_id=1483661114]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.675
+anchor_top = 1.0
+anchor_right = 0.675
+anchor_bottom = 1.0
+offset_left = -285.75
+offset_top = -190.0
+offset_right = 285.25
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("29_bv80c")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/remove_ad/Button" unique_id=34917874]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.896
+offset_left = 203.5
+offset_top = 37.0
+offset_right = -200.5
+offset_bottom = -0.024002075
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "$0.99"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/remove_ad" unique_id=1679444078]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.432
+anchor_top = 0.16700001
+anchor_right = 1.0
+anchor_bottom = 0.492
+offset_left = 40.399994
+offset_top = 0.19999695
+offset_right = -65.0
+offset_bottom = 0.19999695
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0.03529412, 0.30588236, 1)
+theme_override_colors/font_outline_color = Color(0.96862745, 0.65882355, 0.09019608, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 90
+text = "Remove ads"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopRow" type="HBoxContainer" parent="UI/Shop/TextureRect/CoinPacks" unique_id=397777498]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect4" type="NinePatchRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow" unique_id=1615048937]
+custom_minimum_size = Vector2(350, 450)
+layout_mode = 2
+texture = ExtResource("27_55jeb")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Coinsicon" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect4" unique_id=1541696193]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -102.0
+offset_right = 108.5
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("33_2060n")
+expand_mode = 1
+
+[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect4" unique_id=1993229864]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -123.0
+offset_right = 116.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("29_bv80c")
+
+[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect4/Button" unique_id=399638299]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -35.0
+offset_right = 85.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "$0.99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect4" unique_id=1267275943]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.5
+offset_top = 47.0
+offset_right = -1.5
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0.03529412, 0.30588236, 1)
+theme_override_colors/font_outline_color = Color(0.96862745, 0.65882355, 0.09019608, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 90
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect5" type="NinePatchRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow" unique_id=2038045909]
+custom_minimum_size = Vector2(350, 450)
+layout_mode = 2
+texture = ExtResource("27_55jeb")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Coinsicon" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect5" unique_id=1824054654]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -102.0
+offset_right = 108.5
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("35_6ml46")
+expand_mode = 1
+
+[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect5" unique_id=130295825]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -123.0
+offset_right = 116.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("29_bv80c")
+
+[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect5/Button" unique_id=734881896]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -35.0
+offset_right = 85.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "$0.99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect5" unique_id=1445545413]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.5
+offset_top = 47.0
+offset_right = -1.5
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0.03529412, 0.30588236, 1)
+theme_override_colors/font_outline_color = Color(0.96862745, 0.65882355, 0.09019608, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 90
+text = "2000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect6" type="NinePatchRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow" unique_id=461411157]
+custom_minimum_size = Vector2(350, 450)
+layout_mode = 2
+texture = ExtResource("27_55jeb")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Coinsicon" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect6" unique_id=1769741599]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -102.0
+offset_right = 108.5
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("36_qax2n")
+expand_mode = 1
+
+[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect6" unique_id=373841995]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -123.0
+offset_right = 116.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("29_bv80c")
+
+[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect6/Button" unique_id=1119214252]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = -35.0
+offset_right = 85.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "$0.99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/TopRow/TextureRect6" unique_id=552391162]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 53.0
+offset_right = 2.0
+offset_bottom = 144.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0.03529412, 0.30588236, 1)
+theme_override_colors/font_outline_color = Color(0.96862745, 0.65882355, 0.09019608, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 90
+text = "10,000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="adCoin" type="NinePatchRect" parent="UI/Shop/TextureRect/CoinPacks" unique_id=518062695]
+custom_minimum_size = Vector2(1000, 400)
+layout_mode = 2
+texture = ExtResource("31_1semv")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="UI/Shop/TextureRect/CoinPacks/adCoin" unique_id=291100729]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 65.0
+offset_top = -144.0
+offset_right = 395.0
+offset_bottom = 171.0
+grow_vertical = 2
+texture = ExtResource("33_2060n")
+expand_mode = 1
+
+[node name="Button" type="TextureButton" parent="UI/Shop/TextureRect/CoinPacks/adCoin" unique_id=1775870028]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.675
+anchor_top = 1.0
+anchor_right = 0.675
+anchor_bottom = 1.0
+offset_left = -285.75
+offset_top = -190.0
+offset_right = 285.25
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("21_1w6v2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/adCoin/Button" unique_id=1525695984]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.896
+offset_left = 149.0
+offset_top = 34.0
+offset_right = -129.0
+offset_bottom = -3.024002
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 65
+text = "watch ad"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/Shop/TextureRect/CoinPacks/adCoin" unique_id=1416570163]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.432
+anchor_top = 0.16700001
+anchor_right = 1.0
+anchor_bottom = 0.492
+offset_left = -62.600006
+offset_top = -25.800003
+offset_right = 9.0
+offset_bottom = 29.199997
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0.03529412, 0.30588236, 1)
+theme_override_colors/font_outline_color = Color(0.96862745, 0.65882355, 0.09019608, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("17_s8vy0")
+theme_override_font_sizes/font_size = 70
+text = "Watch ad to get coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Wardrobe" type="Control" parent="UI" unique_id=201387901 node_paths=PackedStringArray("player_node", "ball_node", "shoe_node", "place_node")]
 visible = false
@@ -1651,9 +1657,10 @@ max_y = 5.943
 [connection signal="pressed" from="UI/Level/Back2" to="UiManager" method="_on_back_btn_pressed"]
 [connection signal="pressed" from="UI/GameOver/ManuBack/RetryButton" to="UI/GameOver" method="_on_retry_button_pressed"]
 [connection signal="pressed" from="UI/GameOver/ManuBack/MenuButton" to="UiManager" method="_on_back_btn_pressed"]
-[connection signal="pressed" from="UI/GameOver/ManuBack/revive" to="UiManager" method="_on_revive_pressed"]
-[connection signal="pressed" from="UI/GameOver/ManuBack/testAd" to="UiManager" method="_on_test_ad_pressed"]
+[connection signal="pressed" from="UI/GameOver/ManuBack/MenuButton" to="UI/GameOver" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="UI/GameOver/ContinueButton" to="UI/GameOver" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="UI/Shop/TextureRect/Back" to="UiManager" method="_on_back_btn_pressed"]
+[connection signal="pressed" from="UI/Shop/TextureRect/CoinPacks/adCoin/Button" to="UI/Shop" method="_on_reward_add_button_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/VBoxContainer/Equip" to="UI/Wardrobe" method="_on_buy_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Player" to="UiManager" method="_on_player_pressed"]
 [connection signal="pressed" from="UI/Wardrobe/VBoxContainer/BottomBarBack/MarginContainer/HBoxContainer/Player" to="UI/Wardrobe" method="_on_player_pressed"]

@@ -35,9 +35,9 @@ func _ready() -> void:
 	# current_skin_index = DataManager.save_data.current_ball_index
 	apply_skin(current_skin_index)
 
-func _process(delta: float) -> void:
-	print(linear_velocity)
-	print(angular_velocity)
+#func _process(delta: float) -> void:
+	#print(linear_velocity)
+	#print(angular_velocity)
 
 func setup_unique_material():
 	var mat: Material

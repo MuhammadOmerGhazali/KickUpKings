@@ -37,6 +37,8 @@ func _ready() -> void:
 	else:
 		push_error("Ball is not assigned in the Main script!")
 	ui_manager.retry_pressed.connect(reset_game)
+	ui_manager.continue_pressed.connect(_on_continue_pressed)
+	ui_manager.menu_pressed.connect(_on_menu_pressed)
 	
 	ui_manager.changecoin(DataManager.save_data.coins)
 
@@ -76,7 +78,7 @@ func _on_game_over() -> void:
 	ui_manager.change_menu(UIManager.Menu.GAME_OVER)
 	ui_manager.updateGameOver(current_score)
 	
-	game_logic_reset()
+	#game_logic_reset()
 
 	
 
@@ -92,3 +94,23 @@ func game_logic_reset():
 	coin_spawner.clear_coins()
 	current_score = 0
 	ui_manager.changeScore(0)
+
+func _on_menu_pressed() -> void:
+	game_logic_reset()
+	audio_manager.play_music()
+
+func _on_continue_pressed() -> void:
+	audio_manager.stop_music()
+	_on_rewarded_ad_completed()
+	
+func _on_rewarded_ad_completed() -> void:
+	continue_game()
+	
+func continue_game() -> void:
+	Ball.reset_ball()
+	playerBody.stop_head_turn()
+	
+	ui_manager.change_menu(UIManager.Menu.LEVEL)
+	audio_manager.play_music()
+	
+	

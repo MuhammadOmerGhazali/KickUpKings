@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 DataManager="*uid://dsjxb6v588vcf"
 SilentWolf="*uid://dakawplvcu5l5"
-Ad_Manager="*uid://cpniwdu5jfb8n"
 
 [display]
 
@@ -31,7 +30,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/admob/plugin.cfg", "res://addons/silent_wolf/plugin.cfg")
+enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg")
 
 [physics]
 

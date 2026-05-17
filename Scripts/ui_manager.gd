@@ -2,10 +2,12 @@ extends Node
 class_name UIManager
 
 signal retry_pressed
+signal continue_pressed
+signal menu_pressed
 
 @export var start_menu_ui : Control 
 @export var level_ui : Control
-@export var game_over_ui : Control
+@export var game_over_ui :GameOverUi
 @export var shop_ui : Control
 @export var wardrobe_ui : Control
 @export var leaderboard_ui : Control
@@ -18,7 +20,10 @@ enum Menu { START, LEVEL, GAME_OVER, SHOP, WARDROBE, LEADERBOARD }
 ]
 
 func _ready() -> void:
-	$"../UI/GameOver".retry_clicked.connect(_on_retry_button_clicked)
+	game_over_ui.retry_button_clicked.connect(_on_retry_button_clicked)
+	game_over_ui.menu_button_pressed.connect(_on_menu_button_clicked)
+	game_over_ui.continue_button_pressed.connect(_on_contine_button_clicked)
+	
 	change_menu(Menu.START)
 	if DataManager.get_player_name() == "":
 		$"../UI/StartMenu/Name".visible = true
@@ -75,18 +80,11 @@ func changecoin(new_coin:int):
 func _on_retry_button_clicked():
 	$"../AudioManager".play_click()
 	retry_pressed.emit()
+
+func _on_menu_button_clicked():
+	$"../AudioManager".play_click()
+	menu_pressed.emit()
 	
-func _on_revive_pressed() -> void:
-	var success: bool = Ad_Manager.show_rewarded_ad(
-		func():
-			_revive_success()
-	)
-	if !success:
-		print("Ad not available")
-		
-func _revive_success() -> void:
-	print("Player revived")
-
-
-func _on_test_ad_pressed() -> void:
-	get_tree().change_scene_to_file("res://addons/admob/gdscript/sample/Main.tscn")
+func _on_contine_button_clicked():
+	$"../AudioManager".play_click()
+	continue_pressed.emit()
