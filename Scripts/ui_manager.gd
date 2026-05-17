@@ -75,3 +75,18 @@ func changecoin(new_coin:int):
 func _on_retry_button_clicked():
 	$"../AudioManager".play_click()
 	retry_pressed.emit()
+	
+func _on_revive_pressed() -> void:
+	var success: bool = Ad_Manager.show_rewarded_ad(
+		func():
+			_revive_success()
+	)
+	if !success:
+		print("Ad not available")
+		
+func _revive_success() -> void:
+	print("Player revived")
+
+
+func _on_test_ad_pressed() -> void:
+	get_tree().change_scene_to_file("res://addons/admob/gdscript/sample/Main.tscn")
