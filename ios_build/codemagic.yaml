@@ -1,0 +1,25 @@
+workflows:
+  ios-build:
+    name: Godot iOS Build
+    max_build_duration: 60
+
+    environment:
+      xcode: latest
+
+    scripts:
+      - name: Show project files
+        script: ls -R
+
+      - name: Build iOS project
+        script: |
+          cd ios
+          
+          # find project type automatically
+          if ls *.xcworkspace 1> /dev/null 2>&1; then
+            xcodebuild -workspace *.xcworkspace -scheme * -configuration Release build
+          else
+            xcodebuild -project *.xcodeproj -scheme * -configuration Release build
+          fi
+
+    artifacts:
+      - build/**/*.app
