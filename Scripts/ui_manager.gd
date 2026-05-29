@@ -72,7 +72,7 @@ func updateGameOver(final_score : int):
 
 func changecoin(new_coin:int):
 	$"../UI/Wardrobe/CoinBackground/CoinLabel".text = str(new_coin)
-	$"../UI/Shop/CoinBackground/CoinLabel".text = str(new_coin)
+	$"../UI/Shop/Fade/CoinBackground/CoinLabel".text = str(new_coin)
 	$"../UI/Level/CoinBackground/CoinLabel".text = str(new_coin)
 	
 

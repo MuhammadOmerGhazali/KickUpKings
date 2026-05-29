@@ -3,9 +3,9 @@ extends Control
 class_name Leaderboard
 
 @onready var list = $TextureRect/container/ScrollContainer/ScoreList
-@onready var my_score_label = $"TextureRect/container/my rank/HBoxContainer/score"
-@onready var my_rank_label = $"TextureRect/container/my rank/HBoxContainer/TextureRect/rank"
-@onready var rank_container = $"TextureRect/container/my rank"
+@onready var my_score_label = $"TextureRect/container/my rank/score"
+@onready var my_rank_label = $"TextureRect/container/my rank/rank"
+
 
 var row_scene = preload("res://Assets/leaderboard/leader_board_row.tscn")
 
@@ -26,7 +26,7 @@ func _ready():
 	#my_score_label.text = str(DataManager.save_data.high_score)
 	my_score_label.text = str(DataManager.leaderboard_cache.cached_player_score)
 	my_rank_label.text = str(DataManager.leaderboard_cache.cached_player_rank)
-	$"TextureRect/container/my rank/HBoxContainer/Name".text = DataManager.get_player_name()
+	$"TextureRect/container/my rank/Name".text = DataManager.get_player_name()
 	
 	# Build the list from cache if it exists
 	if DataManager.leaderboard_cache.top_scores.size() > 0:
@@ -105,7 +105,7 @@ func build_leaderboard(scores):
 		var p_name = scores[i].player_name if "player_name" in scores[i] else scores[i].get("player_name", "Unknown")
 		var p_score = scores[i].score if "score" in scores[i] else scores[i].get("score", 0)
 
-		row.get_node("bg/TextureRect/position").text = str(i + 1)
+		row.get_node("bg/position").text = str(i + 1)
 		row.get_node("bg/name").text = str(p_name)
 		row.get_node("bg/score").text = str(int(p_score))
 

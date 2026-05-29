@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://v17afl88mgmq" path="res://Assets/Cleats/albedo_shoe_rainbow.png" id="5_biviq"]
 [ext_resource type="Texture2D" uid="uid://dj441mfr45onn" path="res://Assets/Cleats/albedo_shoe_red.png" id="7_h03rg"]
 
-[sub_resource type="Resource" id="Resource_qnjuo"]
+[sub_resource type="Resource" id="Resource_h03rg"]
 script = ExtResource("2_jkch6")
-skin_name = "black"
-shoe_texture = ExtResource("3_qnjuo")
+skin_name = "darkrainbow"
+shoe_texture = ExtResource("7_h03rg")
 price = 0
 metadata/_custom_type_script = "uid://dq3s15y6cjqtq"
 
@@ -19,20 +19,20 @@ metadata/_custom_type_script = "uid://dq3s15y6cjqtq"
 script = ExtResource("2_jkch6")
 skin_name = "blue"
 shoe_texture = ExtResource("4_h03rg")
-price = 20
+metadata/_custom_type_script = "uid://dq3s15y6cjqtq"
+
+[sub_resource type="Resource" id="Resource_qnjuo"]
+script = ExtResource("2_jkch6")
+skin_name = "black"
+shoe_texture = ExtResource("3_qnjuo")
+price = 2000
 metadata/_custom_type_script = "uid://dq3s15y6cjqtq"
 
 [sub_resource type="Resource" id="Resource_myyb4"]
 script = ExtResource("2_jkch6")
 skin_name = "red"
 shoe_texture = ExtResource("5_biviq")
-price = 50
-metadata/_custom_type_script = "uid://dq3s15y6cjqtq"
-
-[sub_resource type="Resource" id="Resource_h03rg"]
-script = ExtResource("2_jkch6")
-skin_name = "darkrainbow"
-shoe_texture = ExtResource("7_h03rg")
+price = 5000
 metadata/_custom_type_script = "uid://dq3s15y6cjqtq"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qnjuo"]
@@ -82,7 +82,7 @@ shadow_mesh = SubResource("ArrayMesh_unfqo")
 
 [node name="Player" type="Node3D" unique_id=775811241]
 script = ExtResource("1_jkch6")
-shoe_skins = Array[ExtResource("2_jkch6")]([SubResource("Resource_qnjuo"), SubResource("Resource_kqju0"), SubResource("Resource_myyb4"), SubResource("Resource_h03rg")])
+shoe_skins = Array[ExtResource("2_jkch6")]([SubResource("Resource_h03rg"), SubResource("Resource_kqju0"), SubResource("Resource_qnjuo"), SubResource("Resource_myyb4")])
 
 [node name="RightFeet" type="AnimatableBody3D" parent="." unique_id=2090072160 node_paths=PackedStringArray("top_clamp", "bottom_clamp", "pivot") groups=["feet"]]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0.64408326, 0, 0)

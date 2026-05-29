@@ -23,7 +23,7 @@ script = ExtResource("2_f1ek2")
 skin_name = "messi"
 head_path = NodePath("Heads/Messi")
 body_path = NodePath("Body/Messi")
-price = 30
+price = 2000
 metadata/_custom_type_script = "uid://dcpy63qtpnx0n"
 
 [sub_resource type="Resource" id="Resource_pu2lt"]
@@ -31,6 +31,7 @@ script = ExtResource("2_f1ek2")
 skin_name = "ousumane"
 head_path = NodePath("Heads/Ousmane")
 body_path = NodePath("Body/Ousmane_body")
+price = 5000
 metadata/_custom_type_script = "uid://dcpy63qtpnx0n"
 
 [node name="PlayerBody" type="AnimatableBody3D" unique_id=977454013]

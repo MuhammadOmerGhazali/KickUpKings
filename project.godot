@@ -11,15 +11,20 @@ config_version=5
 [application]
 
 config/name="kickUpKings"
+config/version="1.0.0"
 run/main_scene="uid://bajx74wvp8505"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.03222344, 0.54801023, 0.87102795, 1)
+boot_splash/image="uid://cyyagjspc1plt"
+config/icon="uid://wjedqykiqji8"
 
 [autoload]
 
 DataManager="*uid://dsjxb6v588vcf"
 SilentWolf="*uid://dakawplvcu5l5"
 AdManager="*uid://cpniwdu5jfb8n"
+GodotIapPlugin="*uid://cjb1ijpfwqqwu"
+IapStoreManager="*uid://cgd122cg1nbwe"
 
 [display]
 
@@ -31,7 +36,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/admob/plugin.cfg", "res://addons/silent_wolf/plugin.cfg")
+enabled=PackedStringArray("res://addons/admob/plugin.cfg", "res://addons/godot-iap/plugin.cfg", "res://addons/silent_wolf/plugin.cfg")
 
 [physics]
 
@@ -40,5 +45,5 @@ enabled=PackedStringArray("res://addons/admob/plugin.cfg", "res://addons/silent_
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

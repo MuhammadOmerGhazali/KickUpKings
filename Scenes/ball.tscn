@@ -28,20 +28,20 @@ metadata/_custom_type_script = "uid://fe80slio6g4r"
 script = ExtResource("2_31idh")
 skin_name = "green"
 ball_texture = ExtResource("4_o05bq")
-price = 20
 metadata/_custom_type_script = "uid://fe80slio6g4r"
 
 [sub_resource type="Resource" id="Resource_2b6yv"]
 script = ExtResource("2_31idh")
 skin_name = "star"
 ball_texture = ExtResource("5_5wo4o")
-price = 50
+price = 2000
 metadata/_custom_type_script = "uid://fe80slio6g4r"
 
 [sub_resource type="Resource" id="Resource_cx4d7"]
 script = ExtResource("2_31idh")
 skin_name = "yellow"
 ball_texture = ExtResource("6_q6iep")
+price = 5000
 metadata/_custom_type_script = "uid://fe80slio6g4r"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7u77a"]
