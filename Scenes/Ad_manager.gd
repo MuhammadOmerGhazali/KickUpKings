@@ -45,7 +45,8 @@ func _create_ad_view() -> void:
 	if OS.get_name() == "Android":
 		unit_id = "ca-app-pub-3940256099942544/6300978111"
 	elif OS.get_name() == "iOS":
-		unit_id = "ca-app-pub-3940256099942544/2934735716"
+		#unit_id = "ca-app-pub-3940256099942544/2934735716"
+		unit_id = "ca-app-pub-7103096018535648/7610735585"
 
 	_ad_view = AdView.new(
 		unit_id,
@@ -142,7 +143,8 @@ func _on_load_rewarded_pressed():
 	if OS.get_name() == "Android":
 		unit_id = "ca-app-pub-3940256099942544/5224354917"
 	elif OS.get_name() == "iOS":
-		unit_id = "ca-app-pub-3940256099942544/1712485313"
+		#unit_id = "ca-app-pub-3940256099942544/1712485313"
+		unit_id = "ca-app-pub-7103096018535648/4984572245"
 
 	var rewarded_ad_load_callback := RewardedAdLoadCallback.new()
 	rewarded_ad_load_callback.on_ad_failed_to_load = func(adError : LoadAdError) -> void:
